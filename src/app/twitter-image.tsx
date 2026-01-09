@@ -115,7 +115,7 @@ export default async function Image() {
             fontWeight: 'bold',
           }}
         >
-          lighthousedark.dev
+          lighthousedark.org
         </div>
       </div>
     ),
