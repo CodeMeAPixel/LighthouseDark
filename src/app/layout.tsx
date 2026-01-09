@@ -17,7 +17,7 @@ const pramukhRounded = localFont({
   src: "./fonts/PramukhRounded-Variable.woff",
 })
 export const metadata: Metadata = {
-  metadataBase: new URL("https://lighthousedark.dev/"),
+  metadataBase: new URL("https://lighthousedark.org/"),
   title: {
     default: "Lighthouse Dark - The metrics Google is too polite to give you",
     template: "%s | Lighthouse Dark",
@@ -35,15 +35,11 @@ export const metadata: Metadata = {
     "PageSpeed Insights",
     "Web Performance",
   ],
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f0f10" },
-  ],
   openGraph: {
     title: "Lighthouse Dark",
     description:
       "The metrics Google is too polite to give you. Get a blunt analysis of your site's SEO and Web Vitals.",
-    url: "https://lighthousedark.dev/",
+    url: "https://lighthousedark.org/",
     siteName: "Lighthouse Dark",
     images: [
       {
