@@ -1,4 +1,4 @@
-import { PSIData } from "@/app/lib/psiAnalyzer"
+import { LighthouseData as PSIData } from "@/app/lib/lighthouseAnalyzer"
 import { SEOData } from "@/app/lib/seoAnalyzer"
 
 export interface AnalysisResult {

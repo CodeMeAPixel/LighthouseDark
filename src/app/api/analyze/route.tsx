@@ -1,10 +1,31 @@
 import { NextRequest, NextResponse } from "next/server"
 
 import { generateSuggestions } from "@/app/lib/aiSuggestions"
-import { analyzePSI } from "@/app/lib/psiAnalyzer"
+import { analyzeLighthouse } from "@/app/lib/lighthouseAnalyzer"
 import { checkRateLimit } from "@/app/lib/rateLimiter"
 import { analyzeSEO } from "@/app/lib/seoAnalyzer"
-import { isValidUrl, sanitizeInput } from "@/app/lib/utils"
+import { isValidUrl, sanitizeInput, normalizeUrl } from "@/app/lib/utils"
+
+// Simple in-memory cache with TTL (60 seconds)
+interface CacheEntry {
+  data: any
+  timestamp: number
+}
+const analysisCache = new Map<string, CacheEntry>();
+const CACHE_TTL = 60000; // 60 seconds
+
+function getCachedResult(url: string) {
+  const cached = analysisCache.get(url);
+  if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
+    return cached.data;
+  }
+  analysisCache.delete(url);
+  return null;
+}
+
+function setCachedResult(url: string, data: any) {
+  analysisCache.set(url, { data, timestamp: Date.now() });
+}
 
 async function handleRequest(url: string, ip: string) {
   if (!checkRateLimit(ip)) {
@@ -15,16 +36,27 @@ async function handleRequest(url: string, ip: string) {
     return NextResponse.json({ error: "Invalid URL provided" }, { status: 400 })
   }
 
-  const sanitizedUrl = sanitizeInput(url)
+  // Normalize URL (add protocol if missing)
+  const normalizedUrl = normalizeUrl(url.trim());
+  const sanitizedUrl = sanitizeInput(normalizedUrl)
+
+  // Check cache first
+  const cached = getCachedResult(sanitizedUrl);
+  if (cached) {
+    return NextResponse.json(cached);
+  }
 
   const [seoData, psiData] = await Promise.all([
     analyzeSEO(sanitizedUrl),
-    analyzePSI(sanitizedUrl),
+    analyzeLighthouse(sanitizedUrl),
   ])
 
   const suggestions = await generateSuggestions(seoData!, psiData!)
 
-  return NextResponse.json({ seoData, psiData, suggestions })
+  const result = { seoData, psiData, suggestions };
+  setCachedResult(sanitizedUrl, result);
+
+  return NextResponse.json(result)
 }
 
 export async function GET(request: NextRequest) {

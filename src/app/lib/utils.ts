@@ -1,9 +1,23 @@
+export function normalizeUrl(url: string): string {
+  // Trim whitespace
+  const trimmed = url.trim();
+
+  // Check if URL already has a protocol
+  if (/^https?:\/\//i.test(trimmed)) {
+    return trimmed;
+  }
+
+  // Add https:// as default protocol for URLs without one
+  return `https://${trimmed}`;
+}
+
 export function isValidUrl(url: string): boolean {
   try {
-    new URL(url)
-    return true
+    const normalized = normalizeUrl(url);
+    new URL(normalized);
+    return true;
   } catch (error) {
-    return false
+    return false;
   }
 }
 

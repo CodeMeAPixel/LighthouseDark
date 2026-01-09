@@ -47,7 +47,7 @@ export async function analyzeSEO(url: string): Promise<SEOData | undefined> {
   const controller = new AbortController();
   let timeout: ReturnType<typeof setTimeout> | undefined;
   try {
-    timeout = setTimeout(() => controller.abort(), 15000);
+    timeout = setTimeout(() => controller.abort(), 8000);
 
   const res = await fetch(url, {
       headers: {
@@ -157,7 +157,7 @@ export async function analyzeSEO(url: string): Promise<SEOData | undefined> {
     const contentEncoding = res.headers.get("content-encoding");
     const contentType = res.headers.get("content-type");
 
-    // robots.txt and sitemap checks with tight timeouts
+    // robots.txt and sitemap checks with tight timeouts (parallelized)
     let robotsTxtPresent: boolean | null = null;
     let robotsTxtDisallowAll: boolean | null = null;
     let sitemapPresent: boolean | null = null;
@@ -166,43 +166,34 @@ export async function analyzeSEO(url: string): Promise<SEOData | undefined> {
       const robotsUrl = new URL("/robots.txt", origin).href;
       const sitemapUrl = new URL("/sitemap.xml", origin).href;
 
-      const shortController = new AbortController();
-      const shortTimeout = setTimeout(() => shortController.abort(), 4000);
+      // Parallelize robots.txt and sitemap checks with shared timeout
+      const checkController = new AbortController();
+      const checkTimeout = setTimeout(() => checkController.abort(), 3000);
+
       try {
-        const r = await fetch(robotsUrl, {
-          headers: { Accept: "text/plain" },
-          signal: shortController.signal,
-        });
-        if (r.ok) {
+        const [robotsRes, sitemapRes] = await Promise.allSettled([
+          fetch(robotsUrl, { headers: { Accept: "text/plain" }, signal: checkController.signal }),
+          fetch(sitemapUrl, { headers: { Accept: "application/xml,text/xml;q=0.9,*/*;q=0.8" }, signal: checkController.signal })
+        ]);
+
+        if (robotsRes.status === "fulfilled" && robotsRes.value.ok) {
           robotsTxtPresent = true;
-          const text = (await r.text()).slice(0, 4000);
+          const text = (await robotsRes.value.text()).slice(0, 2000);
           const uaAll = /user-agent\s*:\s*\*/i.test(text);
           const disallowAll = /disallow\s*:\s*\/$/im.test(text) || /disallow\s*:\s*\/*\s*$/im.test(text);
           robotsTxtDisallowAll = uaAll && disallowAll ? true : false;
           if (/sitemap\s*:/i.test(text)) sitemapPresent = true;
         } else {
-          robotsTxtPresent = false;
+          robotsTxtPresent = robotsRes.status === "fulfilled" ? false : null;
         }
-      } catch {
-        robotsTxtPresent = null;
-      } finally {
-        clearTimeout(shortTimeout);
-      }
 
-      if (sitemapPresent === null) {
-        const shortController2 = new AbortController();
-        const shortTimeout2 = setTimeout(() => shortController2.abort(), 4000);
-        try {
-          const s = await fetch(sitemapUrl, {
-            headers: { Accept: "application/xml,text/xml;q=0.9,*/*;q=0.8" },
-            signal: shortController2.signal,
-          });
-          sitemapPresent = s.ok ? true : false;
-        } catch {
-          sitemapPresent = null;
-        } finally {
-          clearTimeout(shortTimeout2);
+        if (sitemapRes.status === "fulfilled" && sitemapRes.value.ok) {
+          sitemapPresent = true;
+        } else if (sitemapPresent === null) {
+          sitemapPresent = sitemapRes.status === "fulfilled" ? false : null;
         }
+      } finally {
+        clearTimeout(checkTimeout);
       }
     } catch {
       // ignore

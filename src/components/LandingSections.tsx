@@ -1,9 +1,9 @@
 "use client"
 
-import useUrlStore from "@/app/components/AppContext"
-import FeatureGrid from "@/app/components/FeatureGrid"
-import StatsBar from "@/app/components/StatsBar"
-import Steps from "@/app/components/Steps"
+import useUrlStore from "@/components/AppContext"
+import FeatureGrid from "@/components/FeatureGrid"
+import StatsBar from "@/components/StatsBar"
+import Steps from "@/components/Steps"
 
 export default function LandingSections() {
   const currentUrl = useUrlStore((s) => s.currentUrl)

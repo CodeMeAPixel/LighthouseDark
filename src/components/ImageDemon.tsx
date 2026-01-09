@@ -2,10 +2,14 @@
 
 import { useEffect, useId, useMemo, useRef, useState } from "react"
 import { useTheme } from "next-themes"
+import { motion } from "framer-motion"
+import { Download, Copy, Check } from "lucide-react"
 
 export default function ImageDemon() {
   const { theme } = useTheme()
   const [mounted, setMounted] = useState(false)
+  const [copiedSVG, setCopiedSVG] = useState(false)
+  const [copiedPNG, setCopiedPNG] = useState(false)
   const uid = useId()
 
   useEffect(() => {
@@ -36,11 +40,13 @@ export default function ImageDemon() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "roastlab.svg";
+    a.download = "lighthouse-dark.svg";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     setTimeout(() => URL.revokeObjectURL(url), 1000);
+    setCopiedSVG(true);
+    setTimeout(() => setCopiedSVG(false), 2000);
   };
 
   const handleDownloadPNG = () => {
@@ -64,11 +70,13 @@ export default function ImageDemon() {
             const pngUrl = URL.createObjectURL(blob);
             const a = document.createElement("a");
             a.href = pngUrl;
-            a.download = "roastlab.png";
+            a.download = "lighthouse-dark.png";
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             setTimeout(() => URL.revokeObjectURL(pngUrl), 1000);
+            setCopiedPNG(true);
+            setTimeout(() => setCopiedPNG(false), 2000);
           }
         }, "image/png");
       }
@@ -82,13 +90,35 @@ export default function ImageDemon() {
 
   return (
     <div className="flex flex-col items-center">
-      <svg
-        ref={svgRef}
-        role="img"
-        aria-label="RoastLab illustration"
-        viewBox="0 0 640 480"
-        className="relative z-10 mx-auto w-[400px] select-none"
+      {/* SVG with entrance animation */}
+      <motion.div
+        className="relative"
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{ once: true }}
       >
+        {/* Animated glow background */}
+        <motion.div
+          className="absolute -inset-8 rounded-3xl bg-gradient-to-r from-[#FF2574]/20 to-[#FF8AB2]/20 blur-2xl dark:from-[#FF6B00]/20 dark:to-[#FFC000]/20"
+          animate={{
+            opacity: [0.3, 0.6, 0.3],
+            scale: [1, 1.05, 1],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+
+        <svg
+          ref={svgRef}
+          role="img"
+          aria-label="Lighthouse Dark illustration"
+          viewBox="0 0 640 480"
+          className="relative z-10 mx-auto w-[400px] select-none drop-shadow-2xl"
+        >
         <defs>
           <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="1">
             {isDark ? (
@@ -230,7 +260,7 @@ export default function ImageDemon() {
             fill={isDark ? "#e5e7eb" : "#111827"}
             opacity={0.9}
           >
-            RoastLab
+            Lighthouse Dark
           </text>
           <text
             x="100"
@@ -243,22 +273,86 @@ export default function ImageDemon() {
           </text>
         </g>
       </svg>
-      <div className="mt-4 flex gap-2">
-        <button
+      </motion.div>
+
+      {/* Enhanced button group with animations */}
+      <motion.div 
+        className="mt-8 flex flex-wrap gap-3 justify-center"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        viewport={{ once: true }}
+      >
+        <motion.button
           type="button"
-          className="rounded-md bg-[#FF2574] px-3 py-1 text-white shadow hover:bg-[#FF6B00] focus:outline-none focus:ring-2 focus:ring-offset-2"
           onClick={handleDownloadSVG}
+          className="group relative inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#FF2574] to-[#FF8AB2] px-4 py-2.5 font-medium text-white shadow-lg transition-all dark:from-[#FF6B00] dark:to-[#FFC000] hover:shadow-xl"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          Download SVG
-        </button>
-        <button
+          {!copiedSVG ? (
+            <>
+              <Download className="h-4 w-4" />
+              <span>Download SVG</span>
+            </>
+          ) : (
+            <>
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", stiffness: 200 }}
+              >
+                <Check className="h-4 w-4" />
+              </motion.div>
+              <span>Downloaded!</span>
+            </>
+          )}
+          
+          {/* Shine effect on hover */}
+          <motion.div
+            className="absolute inset-0 rounded-lg bg-gradient-to-r from-white/0 via-white/20 to-white/0"
+            initial={{ x: "-100%" }}
+            whileHover={{ x: "100%" }}
+            transition={{ duration: 0.5 }}
+            style={{ pointerEvents: "none" }}
+          />
+        </motion.button>
+
+        <motion.button
           type="button"
-          className="rounded-md bg-[#FF2574] px-3 py-1 text-white shadow hover:bg-[#FF6B00] focus:outline-none focus:ring-2 focus:ring-offset-2"
           onClick={handleDownloadPNG}
+          className="group relative inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#FF2574] to-[#FF8AB2] px-4 py-2.5 font-medium text-white shadow-lg transition-all dark:from-[#FF6B00] dark:to-[#FFC000] hover:shadow-xl"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          Download PNG
-        </button>
-      </div>
+          {!copiedPNG ? (
+            <>
+              <Download className="h-4 w-4" />
+              <span>Download PNG</span>
+            </>
+          ) : (
+            <>
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", stiffness: 200 }}
+              >
+                <Check className="h-4 w-4" />
+              </motion.div>
+              <span>Downloaded!</span>
+            </>
+          )}
+
+          {/* Shine effect on hover */}
+          <motion.div
+            className="absolute inset-0 rounded-lg bg-gradient-to-r from-white/0 via-white/20 to-white/0"
+            initial={{ x: "-100%" }}
+            whileHover={{ x: "100%" }}
+            transition={{ duration: 0.5 }}
+            style={{ pointerEvents: "none" }}
+          />
+        </motion.button>
+      </motion.div>
     </div>
   )
 }

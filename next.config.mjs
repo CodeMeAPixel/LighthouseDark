@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  swcMinify: true,
-  reactStrictMode: false,
   images: {
     domains: [
       "www.gstatic.com", // PSI screenshots
@@ -18,14 +16,7 @@ const nextConfig = {
         { key: "Access-Control-Allow-Headers", value: "Content-Type" },
       ],
     },
-  ],
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ["@svgr/webpack"],
-    });
-    return config;
-  },
+  ]
 };
 
 export default nextConfig;

@@ -4,47 +4,57 @@ import localFont from "next/font/local"
 import { ThemeProvider } from "next-themes"
 import Script from "next/script"
 
-import { Analytics } from "@/app/components/Analytics"
+import { Analytics } from "@/components/Analytics"
 
 import "./globals.css"
 
-import { FloatNav } from "@/app/components/FloatNav"
-import { NavPill } from "@/app/components/NavPill"
-import QueryProvider from "@/app/components/QueryProvider"
+import { FloatNav } from "@/components/FloatNav"
+import { NavPill } from "@/components/NavPill"
+import QueryProvider from "@/components/QueryProvider"
 
 const inter = Inter({ subsets: ["latin"] })
 const pramukhRounded = localFont({
   src: "./fonts/PramukhRounded-Variable.woff",
 })
 export const metadata: Metadata = {
-  metadataBase: new URL("https://roastlab.lol/"),
+  metadataBase: new URL("https://lighthousedark.dev/"),
   title: {
-    default: "Roast Lab",
-    template: "%s | Roast Lab",
+    default: "Lighthouse Dark - The metrics Google is too polite to give you",
+    template: "%s | Lighthouse Dark",
   },
   description:
-    "Paste a URL and get a sharp, no bullsh** critique across SEO and Core Web Vitals with clear next steps.",
+    "The metrics Google is too polite to give you. Get a blunt, witty critique of your website's SEO and Core Web Vitals with real data and actionable fixes.",
   keywords: [
-    "crux, ai, vercel, web vitals, seo, performance, accessibility, best practices, pwa",
+    "Lighthouse",
+    "SEO",
+    "Web Vitals",
+    "Performance",
+    "Website Analysis",
+    "Core Web Vitals",
+    "CrUX",
+    "PageSpeed Insights",
+    "Web Performance",
   ],
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
     { media: "(prefers-color-scheme: dark)", color: "#0f0f10" },
   ],
   openGraph: {
-    title: "Roast Lab",
+    title: "Lighthouse Dark",
     description:
-      "Paste a URL and get a sharp, no bullsh** critique across SEO and Core Web Vitals with clear next steps.",
-    url: "https://roastlab.lol/",
-    siteName: "Roast Lab",
+      "The metrics Google is too polite to give you. Get a blunt analysis of your site's SEO and Web Vitals.",
+    url: "https://lighthousedark.dev/",
+    siteName: "Lighthouse Dark",
     images: [
       {
-        url: "https://roastlab.lol/og.png",
-        width: 1920,
-        height: 1080,
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Lighthouse Dark - The metrics Google is too polite to give you",
+        type: "image/png",
       },
     ],
-    locale: "en-EN",
+    locale: "en_US",
     type: "website",
   },
   robots: {
@@ -59,8 +69,11 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-  title: "Roast Lab",
     card: "summary_large_image",
+    title: "Lighthouse Dark - The metrics Google is too polite to give you",
+    description: "Get a blunt analysis of your website's SEO and Core Web Vitals performance.",
+    creator: "@CodeMeAPixel",
+    site: "@LighthouseDarkApp",
   },
   icons: {
     icon: [
