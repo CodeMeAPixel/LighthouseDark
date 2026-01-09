@@ -135,10 +135,15 @@ async function runPSIAnalysis(url: string, strategy: "mobile" | "desktop"): Prom
     const encodedUrl = encodeURIComponent(url)
     const psiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodedUrl}&key=${apiKey}&strategy=${strategy}&category=performance&category=accessibility&category=best-practices&category=seo`
 
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 60000)
+
     const response = await fetch(psiUrl, {
       headers: { "User-Agent": "Lighthouse-Dark/1.0" },
-      timeout: 60000,
+      signal: controller.signal,
     })
+
+    clearTimeout(timeoutId)
 
     if (!response.ok) {
       console.error(`PSI API error (${strategy}):`, response.status, response.statusText)
