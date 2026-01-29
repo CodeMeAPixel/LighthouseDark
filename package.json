@@ -11,7 +11,7 @@
     "format": "biome format",
     "lint": "biome lint",
     "check": "biome check",
-    "start": "node --import ./instrument.server.mjs dist/server/index.js",
+    "start": "node --import ./instrument.server.mjs dist/server/server.js",
     "deploy": "npm run build && git push origin master"
   },
   "dependencies": {
