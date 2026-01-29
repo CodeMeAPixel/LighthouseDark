@@ -1,7 +1,6 @@
 import * as Sentry from "@sentry/node";
 
-const sentryDsn =
-	process.env.SENTRY_DSN || process.env.VITE_SENTRY_DSN;
+const sentryDsn = process.env.SENTRY_DSN || process.env.VITE_SENTRY_DSN;
 
 if (!sentryDsn) {
 	console.warn("SENTRY_DSN is not defined. Sentry error tracking is disabled.");
