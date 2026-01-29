@@ -30,7 +30,7 @@ export default function ErrorBoundary({ error, reset, statusCode }: ErrorBoundar
       >
         {/* Flame icon with status */}
         <motion.div
-          className="relative mb-8"
+          className="relative mb-8 flex justify-center w-full"
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ type: 'spring', stiffness: 100 }}

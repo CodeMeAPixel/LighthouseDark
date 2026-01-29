@@ -34,8 +34,11 @@ export default function AnalyzerForm({ minLoadingTime = 3000 }: AnalyzerFormProp
     mutationKey: ['analyze'],
     mutationFn: async (urlToAnalyze: string): Promise<AnalysisResult> => {
       const response = await analyzeUrl({ data: { url: urlToAnalyze } })
-      if ('error' in response) {
+      if (response && 'error' in response) {
         throw new Error(response.error)
+      }
+      if (!response) {
+        throw new Error('No response from server')
       }
       return response as AnalysisResult
     },

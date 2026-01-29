@@ -47,7 +47,7 @@ export const analyzeUrl = createServerFn({ method: 'POST' })
 
     try {
       // Rate limiting
-      const { allowed, remaining, resetTime } = checkRateLimit('global')
+      const { allowed, resetTime } = checkRateLimit('global')
       if (!allowed) {
         return {
           error: `Rate limit exceeded. Please try again in ${Math.ceil((resetTime - Date.now()) / 1000)} seconds.`,
@@ -77,7 +77,7 @@ export const analyzeUrl = createServerFn({ method: 'POST' })
         if (seoData || lighthouseData) {
           aiSuggestions = await generateAISuggestions({
             url: normalizedUrl,
-            seo: seoData,
+            seo: seoData ?? null,
             lighthouse: lighthouseData,
           })
         }

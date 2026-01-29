@@ -16,7 +16,7 @@ export default function NotFound() {
       >
         {/* Flame Icon with 404 */}
         <motion.div
-          className="relative mb-8"
+          className="relative mb-8 flex justify-center w-full"
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ type: 'spring', stiffness: 100 }}

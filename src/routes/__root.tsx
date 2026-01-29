@@ -9,13 +9,13 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
 
-import NavPill from '../components/NavPill'
-import FloatNav from '../components/FloatNav'
-import NotFound from '../components/NotFound'
-import ErrorBoundary from '../components/ErrorBoundary'
+import NavPill from '../components/Static/NavPill'
+import FloatNav from '../components/Static/FloatNav'
+import NotFound from '../components/Feedback/NotFound'
+import ErrorBoundary from '../components/Feedback/ErrorBoundary'
 
 // Lazy load ParticlesBackground to ensure it only renders on client
-const ParticlesBackground = lazy(() => import('../components/ParticlesBackground'))
+const ParticlesBackground = lazy(() => import('../components/ui/ParticlesBackground'))
 
 import appCss from '../styles.css?url'
 
