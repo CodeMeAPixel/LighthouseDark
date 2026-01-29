@@ -1,7 +1,5 @@
-"use client"
-
-import { motion } from "framer-motion"
-import { CheckCircle2, Link2, ScanSearch } from "lucide-react"
+import { motion } from 'framer-motion'
+import { CheckCircle2, Link2, ScanSearch } from 'lucide-react'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -28,22 +26,22 @@ const itemVariants = {
 export default function Steps() {
   const steps = [
     {
-      title: "Drop a URL",
-      body: "Any public site. We sanitize inputs for safety.",
+      title: 'Drop a URL',
+      body: 'Any public site. We sanitize inputs for safety.',
       icon: <Link2 className="h-5 w-5" />,
-      color: "from-blue-500 to-cyan-500",
+      color: 'from-blue-500 to-cyan-500',
     },
     {
-      title: "We analyze",
-      body: "Fetch HTML, parse SEO, and pull field data from CrUX.",
+      title: 'We analyze',
+      body: 'Fetch HTML, parse SEO, and pull field data from CrUX.',
       icon: <ScanSearch className="h-5 w-5" />,
-      color: "from-purple-500 to-pink-500",
+      color: 'from-purple-500 to-pink-500',
     },
     {
-      title: "Get the roast",
-      body: "Clear fixes with a spicy tone. Prioritized and pragmatic.",
+      title: 'Get the roast',
+      body: 'Clear fixes with a spicy tone. Prioritized and pragmatic.',
       icon: <CheckCircle2 className="h-5 w-5" />,
-      color: "from-[#FF2574] to-[#FF8AB2] dark:from-[#FF6B00] dark:to-[#FFC000]",
+      color: 'from-[#FF2574] to-[#FF8AB2] dark:from-[#FF6B00] dark:to-[#FFC000]',
     },
   ]
 
@@ -66,7 +64,7 @@ export default function Steps() {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
+        viewport={{ once: true, margin: '-50px' }}
       >
         {steps.map((s, i) => (
           <motion.div
@@ -80,7 +78,9 @@ export default function Steps() {
             )}
 
             <div className="mb-4 flex items-center gap-3">
-              <div className={`flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${s.color} text-white shadow-lg`}>
+              <div
+                className={`flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${s.color} text-white shadow-lg`}
+              >
                 <span className="text-sm font-bold">{i + 1}</span>
               </div>
               <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-white/30 text-light12 dark:border-white/10 dark:bg-white/10 dark:text-dark12">

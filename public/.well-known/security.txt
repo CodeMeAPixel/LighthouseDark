@@ -1,0 +1,14 @@
+# Security Policy for Lighthouse Dark
+# https://lighthousedark.org
+
+Contact: mailto:hey@codemeapixel.dev
+Contact: https://github.com/CodeMeAPixel/LighthouseDark/security/advisories/new
+Expires: 2027-01-29T00:00:00.000Z
+Encryption: https://lighthousedark.org/.well-known/pgp-key.txt
+Preferred-Languages: en
+Canonical: https://lighthousedark.org/.well-known/security.txt
+Policy: https://github.com/CodeMeAPixel/LighthouseDark/security/policy
+Hiring: https://github.com/CodeMeAPixel/LighthouseDark
+
+# If you discover a security vulnerability, please report it responsibly.
+# We appreciate your efforts in keeping Lighthouse Dark secure.

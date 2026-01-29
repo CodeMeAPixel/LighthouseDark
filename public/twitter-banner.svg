@@ -1,0 +1,151 @@
+<svg width="1500" height="500" viewBox="0 0 1500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Title gradient -->
+    <linearGradient id="bannerTitleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FF2574"/>
+      <stop offset="50%" style="stop-color:#FF8AB2"/>
+      <stop offset="100%" style="stop-color:#FF6B00"/>
+    </linearGradient>
+    
+    <!-- Ray gradient -->
+    <linearGradient id="bannerRayGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B00"/>
+      <stop offset="100%" style="stop-color:#FF2574"/>
+    </linearGradient>
+    
+    <!-- Background glows -->
+    <radialGradient id="bannerGlowOrange" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FF6B00;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#FF6B00;stop-opacity:0"/>
+    </radialGradient>
+    
+    <radialGradient id="bannerGlowPink" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FF2574;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#FF2574;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1500" height="500" fill="#0f0f10"/>
+  
+  <!-- Gradient glow orbs -->
+  <ellipse cx="200" cy="250" rx="280" ry="220" fill="url(#bannerGlowOrange)"/>
+  <ellipse cx="1350" cy="300" rx="220" ry="180" fill="url(#bannerGlowPink)"/>
+  <ellipse cx="750" cy="80" rx="350" ry="120" fill="url(#bannerGlowOrange)" opacity="0.4"/>
+  
+  <!-- Left side: Logo/Lighthouse - vertically centered -->
+  <g transform="translate(180, 250)">
+    <!-- Light rays - centered at lighthouse top -->
+    <g transform="translate(0, -100)" opacity="0.9">
+      <rect x="-5" y="-70" width="10" height="40" rx="5" fill="url(#bannerRayGradient)" transform="rotate(0)"/>
+      <rect x="-5" y="-70" width="10" height="34" rx="5" fill="url(#bannerRayGradient)" transform="rotate(24)"/>
+      <rect x="-5" y="-70" width="10" height="38" rx="5" fill="url(#bannerRayGradient)" transform="rotate(48)"/>
+      <rect x="-5" y="-70" width="10" height="32" rx="5" fill="url(#bannerRayGradient)" transform="rotate(72)"/>
+      <rect x="-5" y="-70" width="10" height="36" rx="5" fill="url(#bannerRayGradient)" transform="rotate(96)"/>
+      <rect x="-5" y="-70" width="10" height="38" rx="5" fill="url(#bannerRayGradient)" transform="rotate(120)"/>
+      <rect x="-5" y="-70" width="10" height="32" rx="5" fill="url(#bannerRayGradient)" transform="rotate(144)"/>
+      <rect x="-5" y="-70" width="10" height="40" rx="5" fill="url(#bannerRayGradient)" transform="rotate(168)"/>
+      <rect x="-5" y="-70" width="10" height="32" rx="5" fill="url(#bannerRayGradient)" transform="rotate(-168)"/>
+      <rect x="-5" y="-70" width="10" height="38" rx="5" fill="url(#bannerRayGradient)" transform="rotate(-144)"/>
+      <rect x="-5" y="-70" width="10" height="36" rx="5" fill="url(#bannerRayGradient)" transform="rotate(-120)"/>
+      <rect x="-5" y="-70" width="10" height="32" rx="5" fill="url(#bannerRayGradient)" transform="rotate(-96)"/>
+      <rect x="-5" y="-70" width="10" height="38" rx="5" fill="url(#bannerRayGradient)" transform="rotate(-72)"/>
+      <rect x="-5" y="-70" width="10" height="34" rx="5" fill="url(#bannerRayGradient)" transform="rotate(-48)"/>
+      <rect x="-5" y="-70" width="10" height="38" rx="5" fill="url(#bannerRayGradient)" transform="rotate(-24)"/>
+    </g>
+    
+    <!-- Lighthouse structure -->
+    <g>
+      <!-- Base -->
+      <rect x="-60" y="85" width="120" height="12" rx="3" fill="#FF6B00"/>
+      
+      <!-- Tower body -->
+      <path d="M-36 85 L-24 -12 L24 -12 L36 85 Z" fill="#1a1a1a" stroke="#FF6B00" stroke-width="2"/>
+      
+      <!-- Stripes -->
+      <rect x="-33" y="58" width="66" height="12" fill="#FF6B00" opacity="0.8"/>
+      <rect x="-28" y="22" width="56" height="12" fill="#FF6B00" opacity="0.8"/>
+      
+      <!-- Light housing -->
+      <rect x="-28" y="-36" width="56" height="28" rx="3" fill="#2a2a2a" stroke="#FF6B00" stroke-width="2"/>
+      
+      <!-- Light window -->
+      <rect x="-20" y="-31" width="40" height="18" rx="2" fill="#FFC000"/>
+      <rect x="-12" y="-28" width="5" height="12" fill="#2a2a2a" opacity="0.3"/>
+      <rect x="-2" y="-28" width="5" height="12" fill="#2a2a2a" opacity="0.3"/>
+      <rect x="8" y="-28" width="5" height="12" fill="#2a2a2a" opacity="0.3"/>
+      
+      <!-- Roof -->
+      <path d="M-32 -36 L0 -58 L32 -36 Z" fill="#FF6B00"/>
+      <circle cx="0" cy="-58" r="5" fill="#FFC000"/>
+    </g>
+  </g>
+  
+  <!-- Center/Right: Text content - vertically centered -->
+  <g transform="translate(420, 0)">
+    <!-- Main title -->
+    <text x="0" y="200" 
+          font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif" 
+          font-size="68" 
+          font-weight="700" 
+          fill="url(#bannerTitleGradient)"
+          letter-spacing="-2">
+      Lighthouse Dark
+    </text>
+    
+    <!-- Tagline -->
+    <text x="0" y="260" 
+          font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif" 
+          font-size="26" 
+          font-weight="500" 
+          fill="#888888">
+      The metrics Google is too polite to give you.
+    </text>
+    
+    <!-- Features pills -->
+    <g transform="translate(0, 295)">
+      <!-- SEO pill -->
+      <g>
+        <rect x="0" y="0" width="70" height="30" rx="15" fill="#FF6B00" opacity="0.15"/>
+        <text x="35" y="20" 
+              font-family="system-ui, -apple-system, sans-serif" 
+              font-size="13" 
+              font-weight="600" 
+              fill="#FF6B00" 
+              text-anchor="middle">
+          SEO
+        </text>
+      </g>
+      
+      <!-- Core Web Vitals pill -->
+      <g transform="translate(85, 0)">
+        <rect x="0" y="0" width="140" height="30" rx="15" fill="#FF2574" opacity="0.15"/>
+        <text x="70" y="20" 
+              font-family="system-ui, -apple-system, sans-serif" 
+              font-size="13" 
+              font-weight="600" 
+              fill="#FF2574" 
+              text-anchor="middle">
+          Core Web Vitals
+        </text>
+      </g>
+      
+      <!-- AI Roast pill -->
+      <g transform="translate(240, 0)">
+        <rect x="0" y="0" width="90" height="30" rx="15" fill="#FFC000" opacity="0.15"/>
+        <text x="45" y="20" 
+              font-family="system-ui, -apple-system, sans-serif" 
+              font-size="13" 
+              font-weight="600" 
+              fill="#FFC000" 
+              text-anchor="middle">
+          AI Roast
+        </text>
+      </g>
+    </g>
+  </g>
+  
+  <!-- Decorative wave at bottom -->
+  <path d="M0 485 Q75 465, 150 485 Q225 500, 300 485 Q375 465, 450 485 Q525 500, 600 485 Q675 465, 750 485 Q825 500, 900 485 Q975 465, 1050 485 Q1125 500, 1200 485 Q1275 465, 1350 485 Q1425 500, 1500 485 L1500 500 L0 500 Z" 
+        fill="url(#bannerRayGradient)" opacity="0.2"/>
+</svg>

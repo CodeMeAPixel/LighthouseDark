@@ -1,0 +1,32 @@
+/* TEAM */
+Developer: Tyler H
+Site: https://codemeapixel.dev
+Twitter: @CodeMeAPixel
+GitHub: @CodeMeAPixel
+Location: Canada
+
+/* THANKS */
+TanStack Team - For TanStack Start, Router, and Query
+Google - For Lighthouse, CrUX, and PageSpeed Insights APIs
+Vercel - For @vercel/og image generation
+Cloudflare - For Workers edge computing
+Tailwind Labs - For Tailwind CSS
+Framer - For Framer Motion animations
+The Open Source Community - For inspiration and contributions
+
+/* SITE */
+Last update: 2026-01-29
+Language: English
+Doctype: HTML5
+IDE: Visual Studio Code
+Standards: HTML5, CSS3, ES2024, TypeScript 5.7
+Components: React 19, TanStack Start, Zustand, Framer Motion
+Styles: Tailwind CSS v4, Custom Design System
+Hosting: Cloudflare Workers
+Analytics: Privacy-focused (no cookies)
+License: All Rights Reserved
+
+/* RESOURCES */
+GitHub: https://github.com/CodeMeAPixel/LighthouseDark
+Documentation: https://lighthousedark.org/about
+Issues: https://github.com/CodeMeAPixel/LighthouseDark/issues

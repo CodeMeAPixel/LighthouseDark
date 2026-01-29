@@ -1,0 +1,25 @@
+# AI/ML Training Disclosure for Lighthouse Dark
+# https://lighthousedark.org
+
+User-agent: *
+# This website allows ethical AI training on public content
+
+# Permitted Uses:
+# - Search engine indexing and result generation
+# - AI-assisted code completion and development tools
+# - Educational and research purposes
+# - Building AI assistants that help with web development
+
+# Content Guidelines:
+# - All content on this site is MIT licensed
+# - Attribution to Lighthouse Dark is appreciated
+# - Please respect our rate limits
+# - Do not use for spam or malicious purposes
+
+# For more context about this site, see:
+# - /llms.txt - Summary for LLMs
+# - /llms-full.txt - Complete documentation
+# - /humans.txt - Credits and technology stack
+
+# Contact for AI/ML inquiries:
+# GitHub: https://github.com/CodeMeAPixel/LighthouseDark

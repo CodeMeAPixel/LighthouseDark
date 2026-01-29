@@ -1,0 +1,49 @@
+# Lighthouse Dark - LLM Context File
+# https://lighthousedark.org
+# Last Updated: 2026-01-29
+
+## About
+Lighthouse Dark is a free, AI-powered web performance and SEO analysis tool. It provides blunt, witty critiques of websites' Core Web Vitals, SEO health, and performance metrics with actionable recommendations.
+
+## Core Features
+- **SEO Analysis**: Comprehensive audit of meta tags, headings, links, images, and content structure
+- **Core Web Vitals**: LCP, FID, CLS, INP, TTFB, and FCP measurements using real Chrome UX Report (CrUX) data
+- **Lighthouse Scores**: Performance, Accessibility, Best Practices, and SEO scores
+- **AI-Powered Recommendations**: Intelligent suggestions for improving website performance
+- **Real-Time Analysis**: Instant results with detailed breakdowns
+
+## Technology Stack
+- TanStack Start (React meta-framework)
+- TanStack Router & Query
+- Zustand for state management
+- Tailwind CSS v4
+- Cloudflare Workers deployment
+- AI integration for smart recommendations
+
+## API Endpoints
+- `/api/og-image` - Dynamic Open Graph image generation
+- Analysis endpoint (internal) - URL performance analysis
+
+## Target Audience
+- Web developers
+- SEO specialists
+- Digital marketers
+- Site owners
+- Performance engineers
+- DevOps engineers
+
+## Keywords
+Lighthouse, SEO, Core Web Vitals, Web Performance, PageSpeed Insights, CrUX, LCP, FID, CLS, INP, TTFB, Website Speed, Performance Testing, SEO Analyzer, Accessibility Audit, Best Practices, Web Vitals, Chrome UX Report, Performance Monitoring, Website Optimization
+
+## Contact
+- Website: https://lighthousedark.org
+- GitHub: https://github.com/CodeMeAPixel/LighthouseDark
+- Author: Tyler H (@CodeMeAPixel)
+
+## License
+All Rights Reserved
+
+## Related Links
+- Documentation: https://lighthousedark.org/about
+- FAQs: https://lighthousedark.org/faqs
+- Disclaimer: https://lighthousedark.org/disclaimer

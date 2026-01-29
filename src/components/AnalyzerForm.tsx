@@ -1,69 +1,43 @@
-"use client"
+'use client'
 
-import { Suspense, useEffect, useRef, useState } from "react"
-import { useMutation } from "@tanstack/react-query"
-import { useRouter, useSearchParams } from "next/navigation"
-import { motion, AnimatePresence } from "framer-motion"
-import { Search, ArrowRight, AlertCircle, CheckCircle2 } from "lucide-react"
+import { useState, useRef } from 'react'
+import { useNavigate } from '@tanstack/react-router'
+import { useMutation } from '@tanstack/react-query'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Search, ArrowRight, AlertCircle, CheckCircle2 } from 'lucide-react'
 
-import useUrlStore from "@/components/AppContext"
-import ResultsDisplay from "@/components/ResultsDisplay"
-import { normalizeUrl } from "@/app/lib/utils"
-
-import ScannerWindowAnimation from "./Scaner"
+import { useUrlStore } from '@/lib/store'
+import { normalizeUrl } from '@/lib/app-utils'
+import { analyzeUrl } from '@/routes/-api.analyze'
+import ResultsDisplay from './ResultsDisplay'
+import Scanner from './Scanner'
+import type { AnalysisResult } from '@/lib/types'
 
 interface AnalyzerFormProps {
   minLoadingTime?: number
 }
 
-export function AnalyzerForm({ minLoadingTime = 3000 }: AnalyzerFormProps) {
-  const [url, setUrl] = useState("")
+export default function AnalyzerForm({ minLoadingTime = 3000 }: AnalyzerFormProps) {
+  const [url, setUrl] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [showResults, setShowResults] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [isFocused, setIsFocused] = useState(false)
-  const currentUrl = useUrlStore((state) => state.currentUrl)
-  const updateStoreUrl = useUrlStore((state) => state.updateUrl)
-  const results = useUrlStore((state) => state.results)
-  const setResults = useUrlStore((state) => state.setResults)
-  const clearState = useUrlStore((state) => state.clearState)
-  const router = useRouter()
-  const searchParams = useSearchParams()
-  const isInitialLoadRef = useRef(true)
 
-  useEffect(() => {
-    const urlParam = searchParams.get("url")
-    if (urlParam && isInitialLoadRef.current) {
-      isInitialLoadRef.current = false
-      setUrl(urlParam)
-      updateStoreUrl(urlParam)
-      handleAnalysis(urlParam)
-    } else if (!urlParam) {
-      // Reset all local state when URL param is cleared
-      setIsLoading(false)
-      setShowResults(false)
-      setShowSuccess(false)
-      setError(null)
-      setUrl("")
-      clearState()
-    }
-  }, [searchParams])
+  const { currentUrl, results, setUrl: updateStoreUrl, setResults, clearResults } = useUrlStore()
 
+  const navigate = useNavigate()
   const startRef = useRef(0)
+
   const mutation = useMutation({
-    mutationKey: ["analyze"],
-    mutationFn: async (urlToAnalyze: string) => {
-      const res = await fetch("/api/analyze", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url: urlToAnalyze }),
-      })
-      if (!res.ok) {
-        const errorData = await res.json().catch(() => ({}))
-        throw new Error(errorData.message || "Analysis failed. Please try again.")
+    mutationKey: ['analyze'],
+    mutationFn: async (urlToAnalyze: string): Promise<AnalysisResult> => {
+      const response = await analyzeUrl({ data: { url: urlToAnalyze } })
+      if ('error' in response) {
+        throw new Error(response.error)
       }
-      return res.json()
+      return response as AnalysisResult
     },
     onSuccess: async (data, urlToAnalyze) => {
       setError(null)
@@ -76,13 +50,12 @@ export function AnalyzerForm({ minLoadingTime = 3000 }: AnalyzerFormProps) {
       setShowSuccess(true)
       setTimeout(() => setShowSuccess(false), 1500)
       setShowResults(true)
-      // Push to router after results are shown to avoid re-triggering analysis
-      router.push(`?url=${urlToAnalyze}`, undefined)
+      navigate({ to: '/', search: { url: urlToAnalyze } })
     },
     onError: (err: Error) => {
-      console.error("Error:", err)
+      console.error('Error:', err)
       setError(err.message)
-      clearState()
+      clearResults()
       setIsLoading(false)
       setShowResults(false)
     },
@@ -116,7 +89,7 @@ export function AnalyzerForm({ minLoadingTime = 3000 }: AnalyzerFormProps) {
             onSubmit={handleSubmit}
             className="mx-auto mt-8 flex max-w-[580px] flex-col gap-3"
           >
-            <motion.fieldset 
+            <motion.fieldset
               className={`relative flex w-full gap-2 rounded-2xl p-2.5 glass-surface transition-all duration-300 ${
                 isFocused ? 'ring-2 ring-[#FF2574]/20 dark:ring-[#FF6B00]/20' : ''
               }`}
@@ -156,7 +129,7 @@ export function AnalyzerForm({ minLoadingTime = 3000 }: AnalyzerFormProps) {
                       <motion.div
                         className="h-4 w-4 rounded-full border-2 border-white/30 border-t-white"
                         animate={{ rotate: 360 }}
-                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                        transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
                       />
                       <span className="text-[13px]">Analyzing</span>
                     </motion.span>
@@ -181,7 +154,7 @@ export function AnalyzerForm({ minLoadingTime = 3000 }: AnalyzerFormProps) {
               {error && (
                 <motion.div
                   initial={{ opacity: 0, y: -10, height: 0 }}
-                  animate={{ opacity: 1, y: 0, height: "auto" }}
+                  animate={{ opacity: 1, y: 0, height: 'auto' }}
                   exit={{ opacity: 0, y: -10, height: 0 }}
                   className="flex items-center gap-2 rounded-xl bg-red-500/10 px-4 py-3 text-sm text-red-600 dark:text-red-400"
                 >
@@ -191,7 +164,6 @@ export function AnalyzerForm({ minLoadingTime = 3000 }: AnalyzerFormProps) {
               )}
             </AnimatePresence>
 
-            {/* Helper text */}
             <p className="text-center text-xs text-light11 dark:text-dark11">
               Paste any public URL to get a detailed SEO and performance analysis
             </p>
@@ -199,7 +171,7 @@ export function AnalyzerForm({ minLoadingTime = 3000 }: AnalyzerFormProps) {
         )}
       </AnimatePresence>
 
-      {isLoading && <ScannerWindowAnimation />}
+      {isLoading && <Scanner />}
 
       {/* Success toast notification */}
       <AnimatePresence>
@@ -209,12 +181,12 @@ export function AnalyzerForm({ minLoadingTime = 3000 }: AnalyzerFormProps) {
             initial={{ opacity: 0, scale: 0.8, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: -20 }}
-            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 25 }}
           >
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              transition={{ delay: 0.1, type: "spring", stiffness: 400 }}
+              transition={{ delay: 0.1, type: 'spring', stiffness: 400 }}
             >
               <CheckCircle2 className="h-5 w-5 text-white" />
             </motion.div>
@@ -222,7 +194,7 @@ export function AnalyzerForm({ minLoadingTime = 3000 }: AnalyzerFormProps) {
           </motion.div>
         )}
       </AnimatePresence>
-      
+
       <AnimatePresence>
         {showResults && results && (
           <motion.div
@@ -235,15 +207,5 @@ export function AnalyzerForm({ minLoadingTime = 3000 }: AnalyzerFormProps) {
         )}
       </AnimatePresence>
     </div>
-  )
-}
-
-export default function WrappedAnalyzerForm({
-  minLoadingTime,
-}: AnalyzerFormProps) {
-  return (
-    <Suspense fallback={<ScannerWindowAnimation />}>
-      <AnalyzerForm minLoadingTime={minLoadingTime} />
-    </Suspense>
   )
 }

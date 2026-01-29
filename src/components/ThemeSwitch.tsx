@@ -1,18 +1,20 @@
-"use client"
+'use client'
 
-import { useEffect, useState } from "react"
-import { Moon, Sun } from "lucide-react"
-import { useTheme } from "next-themes"
-import { motion, AnimatePresence } from "framer-motion"
+import { useEffect, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Moon, Sun } from 'lucide-react'
 
-export const ThemeSwitch = () => {
+export default function ThemeSwitch() {
   const [mounted, setMounted] = useState(false)
-  const { theme, setTheme } = useTheme()
-
-  const otherTheme = theme === "dark" ? "light" : "dark"
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark')
 
   useEffect(() => {
     setMounted(true)
+    const stored = localStorage.getItem('theme')
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const initialTheme = stored === 'dark' || (!stored && prefersDark) ? 'dark' : 'light'
+    setTheme(initialTheme)
+    document.documentElement.classList.toggle('dark', initialTheme === 'dark')
   }, [])
 
   if (!mounted) {
@@ -23,19 +25,22 @@ export const ThemeSwitch = () => {
     )
   }
 
-  const handleButtonClick = () => {
-    setTheme(otherTheme)
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark'
+    setTheme(newTheme)
+    localStorage.setItem('theme', newTheme)
+    document.documentElement.classList.toggle('dark', newTheme === 'dark')
   }
 
   return (
     <motion.button
       className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg text-light12 transition-colors hover:bg-white/20 dark:text-dark12 dark:hover:bg-white/10"
-      aria-label={`Switch to ${otherTheme} theme`}
-      onClick={handleButtonClick}
+      aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+      onClick={toggleTheme}
       whileTap={{ scale: 0.9 }}
     >
       <AnimatePresence mode="wait" initial={false}>
-        {theme === "dark" ? (
+        {theme === 'dark' ? (
           <motion.div
             key="moon"
             initial={{ y: -10, opacity: 0 }}

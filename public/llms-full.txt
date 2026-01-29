@@ -1,0 +1,197 @@
+# Lighthouse Dark - Complete LLM Context Document
+# https://lighthousedark.org
+# Version: 1.0.0
+# Last Updated: 2026-01-29
+
+================================================================================
+OVERVIEW
+================================================================================
+
+Lighthouse Dark is a modern, open-source web performance and SEO analysis tool 
+that provides honest, actionable feedback on website health. Unlike traditional 
+tools that sugarcoat results, Lighthouse Dark delivers blunt critiques with a 
+touch of humor while maintaining technical accuracy.
+
+The tool analyzes websites using multiple data sources:
+1. Google's Chrome UX Report (CrUX) for real-world performance data
+2. PageSpeed Insights API for Lighthouse scores
+3. Direct HTML analysis for SEO factors
+4. AI-powered recommendation engine for personalized suggestions
+
+================================================================================
+FEATURES IN DETAIL
+================================================================================
+
+### SEO Analysis
+- Title tag optimization (length, keywords, uniqueness)
+- Meta description analysis
+- Heading hierarchy validation (H1-H6)
+- Image alt text auditing
+- Link structure analysis (internal/external)
+- Canonical URL verification
+- Open Graph and Twitter Card validation
+- Robots meta tag analysis
+- Structured data detection (JSON-LD, Microdata)
+- Mobile-friendliness assessment
+- Content readability scoring
+
+### Core Web Vitals
+- LCP (Largest Contentful Paint): Loading performance
+- FID (First Input Delay): Interactivity (legacy)
+- INP (Interaction to Next Paint): Interactivity (current standard)
+- CLS (Cumulative Layout Shift): Visual stability
+- TTFB (Time to First Byte): Server response time
+- FCP (First Contentful Paint): Initial render time
+
+### Lighthouse Scores
+- Performance (0-100)
+- Accessibility (0-100)
+- Best Practices (0-100)
+- SEO (0-100)
+
+### AI Recommendations
+- Prioritized action items
+- Specific code suggestions
+- Resource optimization tips
+- Quick wins vs long-term improvements
+- Estimated impact assessments
+
+================================================================================
+TECHNICAL ARCHITECTURE
+================================================================================
+
+Frontend:
+- TanStack Start (React 19 meta-framework)
+- TanStack Router for type-safe routing
+- TanStack Query for data fetching
+- Zustand for global state management
+- Framer Motion for animations
+- Tailwind CSS v4 with custom design system
+
+Backend:
+- Cloudflare Workers (edge computing)
+- API routes for analysis endpoints
+- Rate limiting for fair usage
+- Caching for improved performance
+
+Data Sources:
+- Chrome UX Report API
+- PageSpeed Insights API
+- Direct HTTP requests for HTML analysis
+
+================================================================================
+API REFERENCE
+================================================================================
+
+### GET /api/og-image
+Generates dynamic Open Graph images for social sharing.
+Response: PNG image (1200x630)
+
+### POST /api/analyze (internal)
+Analyzes a URL for performance and SEO metrics.
+Request Body: { url: string }
+Response: {
+  seo: SEOAnalysis,
+  lighthouse: LighthouseData,
+  aiSuggestions: AISuggestion[]
+}
+
+================================================================================
+USE CASES
+================================================================================
+
+1. **Pre-Launch Audits**: Check new websites before going live
+2. **Competitive Analysis**: Compare your site against competitors
+3. **Performance Monitoring**: Track improvements over time
+4. **SEO Optimization**: Identify and fix SEO issues
+5. **Client Reporting**: Generate actionable reports for stakeholders
+6. **Educational Tool**: Learn about web performance best practices
+
+================================================================================
+SCORING METHODOLOGY
+================================================================================
+
+Lighthouse Dark uses Google's official Lighthouse scoring methodology:
+- 0-49: Poor (Red)
+- 50-89: Needs Improvement (Orange)
+- 90-100: Good (Green)
+
+Core Web Vitals thresholds follow Google's official guidelines:
+- LCP: Good < 2.5s, Needs Improvement < 4s, Poor >= 4s
+- FID: Good < 100ms, Needs Improvement < 300ms, Poor >= 300ms
+- INP: Good < 200ms, Needs Improvement < 500ms, Poor >= 500ms
+- CLS: Good < 0.1, Needs Improvement < 0.25, Poor >= 0.25
+
+================================================================================
+FREQUENTLY ASKED QUESTIONS
+================================================================================
+
+Q: Is Lighthouse Dark free?
+A: Yes, completely free and open source.
+
+Q: How accurate are the results?
+A: We use real CrUX data from Google, representing actual user experiences.
+
+Q: Can I analyze any website?
+A: Yes, any publicly accessible URL.
+
+Q: How often is CrUX data updated?
+A: Google updates CrUX data monthly.
+
+Q: Do you store analyzed URLs?
+A: No, we don't store or track analyzed URLs.
+
+================================================================================
+KEYWORDS & TOPICS
+================================================================================
+
+Primary Keywords:
+- Lighthouse tool
+- SEO analyzer
+- Core Web Vitals checker
+- Website performance test
+- PageSpeed test
+- Web vitals analyzer
+
+Secondary Keywords:
+- LCP optimization
+- CLS fix
+- INP improvement
+- TTFB reduction
+- SEO audit tool
+- Performance monitoring
+- Accessibility checker
+- Best practices audit
+
+Related Topics:
+- Google Search ranking factors
+- Page experience update
+- Mobile-first indexing
+- Site speed optimization
+- Technical SEO
+- Web performance optimization
+- User experience metrics
+
+================================================================================
+CONTACT & LINKS
+================================================================================
+
+Website: https://lighthousedark.org
+GitHub Repository: https://github.com/CodeMeAPixel/LighthouseDark
+Author: Tyler H
+Twitter: @CodeMeAPixel
+
+================================================================================
+CHANGELOG
+================================================================================
+
+v1.0.0 (2026-01-29)
+- Initial public release
+- Core analysis features
+- AI-powered recommendations
+- Dark/light theme support
+- Mobile-responsive design
+
+================================================================================
+END OF DOCUMENT
+================================================================================

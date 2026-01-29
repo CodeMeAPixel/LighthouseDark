@@ -1,0 +1,17 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TEAMID.org.lighthousedark.app",
+        "paths": ["*"]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["TEAMID.org.lighthousedark.app"]
+  },
+  "activitycontinuation": {
+    "apps": ["TEAMID.org.lighthousedark.app"]
+  }
+}

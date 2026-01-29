@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Lighthouse Dark</ShortName>
+  <Description>Analyze any website's SEO and Core Web Vitals with Lighthouse Dark</Description>
+  <Tags>seo lighthouse performance web vitals analysis</Tags>
+  <Contact>hey@codemeapixel.dev</Contact>
+  <Url type="text/html" template="https://lighthousedark.org/?url={searchTerms}"/>
+  <Url type="application/x-suggestions+json" template="https://lighthousedark.org/api/suggestions?q={searchTerms}"/>
+  <LongName>Lighthouse Dark - Web Performance &amp; SEO Analyzer</LongName>
+  <Image width="16" height="16" type="image/x-icon">https://lighthousedark.org/favicon.ico</Image>
+  <Image width="64" height="64" type="image/png">https://lighthousedark.org/logo.png</Image>
+  <Developer>Tyler H</Developer>
+  <Attribution>Powered by Google Lighthouse, CrUX, and PageSpeed Insights APIs</Attribution>
+  <SyndicationRight>open</SyndicationRight>
+  <AdultContent>false</AdultContent>
+  <Language>en-us</Language>
+  <OutputEncoding>UTF-8</OutputEncoding>
+  <InputEncoding>UTF-8</InputEncoding>
+</OpenSearchDescription>

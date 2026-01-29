@@ -1,19 +1,18 @@
-"use client"
+'use client'
 
-import useUrlStore from "@/components/AppContext"
-import FeatureGrid from "@/components/FeatureGrid"
-import StatsBar from "@/components/StatsBar"
-import Steps from "@/components/Steps"
+import { useUrlStore } from '@/lib/store'
+import FeatureGrid from './FeatureGrid'
+import StatsBar from './StatsBar'
+import Steps from './Steps'
 
 export default function LandingSections() {
-  const currentUrl = useUrlStore((s) => s.currentUrl)
-  const results = useUrlStore((s) => s.results)
+  const { currentUrl, results } = useUrlStore()
 
   if (currentUrl || results) return null
 
   return (
     <div className="mt-10 space-y-10">
-       <Steps />
+      <Steps />
       <FeatureGrid />
       <StatsBar />
     </div>

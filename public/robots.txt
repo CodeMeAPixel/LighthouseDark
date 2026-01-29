@@ -1,0 +1,216 @@
+# Lighthouse Dark - robots.txt
+# https://lighthousedark.org
+# Last Updated: 2026-01-29
+
+# =============================================================================
+# DEFAULT RULES - Allow all robots
+# =============================================================================
+User-agent: *
+Allow: /
+
+# Disallow API routes (not for indexing)
+Disallow: /api/
+
+# Allow specific API for OG images (for social crawlers)
+Allow: /api/og-image
+
+# =============================================================================
+# SITEMAP & DISCOVERY FILES
+# =============================================================================
+Sitemap: https://lighthousedark.org/sitemap.xml
+
+# LLM/AI context files
+# See: https://llmstxt.org
+# /llms.txt - Summary for AI/LLMs
+# /llms-full.txt - Complete documentation
+
+# =============================================================================
+# SEARCH ENGINE CRAWLERS
+# =============================================================================
+
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+User-agent: Storebot-Google
+Allow: /
+
+User-agent: Google-InspectionTool
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: BingPreview
+Allow: /
+
+# Yahoo (uses Bing)
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Yandex
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+# Baidu
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+# Apple
+User-agent: Applebot
+Allow: /
+
+# =============================================================================
+# SOCIAL MEDIA CRAWLERS (Allow everything for rich previews)
+# =============================================================================
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+User-agent: Slackbot-LinkExpanding
+Allow: /
+
+User-agent: Discordbot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+User-agent: Pinterest
+Allow: /
+User-agent: Pinterestbot
+Allow: /
+
+User-agent: Embedly
+Allow: /
+
+User-agent: Quora Link Preview
+Allow: /
+
+User-agent: redditbot
+Allow: /
+
+# =============================================================================
+# SEO & ANALYSIS TOOLS (Allow for testing)
+# =============================================================================
+User-agent: AhrefsBot
+Allow: /
+
+User-agent: SemrushBot
+Allow: /
+
+User-agent: MJ12bot
+Allow: /
+
+User-agent: DotBot
+Allow: /
+
+User-agent: Screaming Frog SEO Spider
+Allow: /
+
+User-agent: rogerbot
+Allow: /
+
+# =============================================================================
+# AI/LLM CRAWLERS
+# =============================================================================
+# We allow AI training - see /ai.txt for policy
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# =============================================================================
+# ARCHIVE BOTS (Allow for preservation)
+# =============================================================================
+User-agent: ia_archiver
+Allow: /
+
+User-agent: archive.org_bot
+Allow: /
+
+# =============================================================================
+# BLOCK MALICIOUS/AGGRESSIVE BOTS
+# =============================================================================
+User-agent: AhrefsBot/7.0
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Crawl-delay: 10
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: SemrushBot-BA
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: Sogou
+Disallow: /
+
+# =============================================================================
+# PATHS TO EXCLUDE
+# =============================================================================
+User-agent: *
+Disallow: /_*
+Disallow: /cdn-cgi/
+Disallow: /*.json$
+Disallow: /api/*
+Allow: /api/og-image
+Allow: /manifest.json
+# User-agent: CCBot
+# Disallow: /

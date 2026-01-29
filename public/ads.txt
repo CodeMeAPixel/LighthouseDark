@@ -1,0 +1,5 @@
+# Lighthouse Dark does not display third-party advertisements.
+# This file exists to prevent unauthorized ad fraud.
+# https://lighthousedark.org
+
+# No authorized digital sellers
