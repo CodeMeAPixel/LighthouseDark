@@ -1,21 +1,21 @@
 # Lighthouse Dark
 
-A web performance and SEO analyzer that gives you the metrics Google is too polite to share. Built with TanStack Start, deployed to Cloudflare Workers.
+A web performance and SEO analyzer that gives you the metrics Google is too polite to share. Think of it as a brutally honest friend for your website.
 
 ## What It Does
 
-Enter a URL and get a full breakdown of Core Web Vitals, Lighthouse scores, and SEO issues for both mobile and desktop. An AI layer provides actionable recommendations based on the results.
+Enter a URL and get a full breakdown of Core Web Vitals, Lighthouse scores, and SEO issues for both mobile and desktop. The AI layer delivers context-aware recommendations with a bit of attitude.
 
 ## Features
 
 **Performance Analysis**  
-LCP, FID, CLS, and full Lighthouse audits using the Google PageSpeed Insights API.
+LCP, FID, CLS, and full Lighthouse audits via the Google PageSpeed Insights API. We'll tell you if your site loads like a sloth on sedatives.
 
 **SEO Insights**  
-Meta tags, Open Graph data, heading structure, robots directives, and indexability checks.
+Meta tags, Open Graph data, heading structure, robots directives, and indexability checks. Because yes, meta tags are still a thing.
 
-**AI Recommendations**  
-Context-aware suggestions powered by OpenAI, prioritized by impact.
+**AI Roasts**  
+Sarcastic, actionable suggestions powered by OpenAI. Our AI has a PhD in Sass.
 
 **Edge Deployment**  
 Runs on Cloudflare Workers for low-latency responses worldwide.
@@ -80,3 +80,11 @@ npx wrangler deploy
 - Framer Motion
 - Vercel AI SDK
 - Cloudflare Workers
+
+## Contributing
+
+Found a bug? Want to add more sass to the roasts? Pull requests welcome.
+
+## License
+
+AGPL-3.0

@@ -9,6 +9,11 @@ import tailwindcss from '@tailwindcss/vite'
 import { cloudflare } from '@cloudflare/vite-plugin'
 
 const config = defineConfig({
+  server: {
+    port: 3008,
+    host: '0.0.0.0',
+    allowedHosts: ['roastlab.lol', 'www.lighthousedark.org', 'lighthousedark.org']
+  }
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
