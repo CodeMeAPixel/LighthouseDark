@@ -5,14 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev --port 3000",
-    "build": "vite build && cp instrument.server.mjs .output/server",
+    "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
     "format": "biome format",
     "lint": "biome lint",
     "check": "biome check",
     "deploy": "npm run build && wrangler deploy",
-    "start": "node --import ./.output/server/instrument.server.mjs .output/server/index.mjs"
+    "start": "node --import ./dist/server/instrument.server.mjs dist/server/index.js"
   },
   "dependencies": {
     "@ai-sdk/openai": "^0.0.40",
