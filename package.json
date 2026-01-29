@@ -11,8 +11,8 @@
     "format": "biome format",
     "lint": "biome lint",
     "check": "biome check",
-    "deploy": "npm run build && wrangler deploy",
-    "start": "node --import ./instrument.server.mjs dist/server/index.js"
+    "start": "node dist/server/index.js",
+    "deploy": "npm run build && git push origin master"
   },
   "dependencies": {
     "@ai-sdk/openai": "^0.0.40",

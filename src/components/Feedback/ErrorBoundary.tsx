@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import * as Sentry from "@sentry/tanstackstart-react";
 import { motion } from "framer-motion";
 import {
 	RefreshCw,
@@ -27,14 +26,7 @@ export default function ErrorBoundary({
 }: ErrorBoundaryProps) {
 	useEffect(() => {
 		console.error("Error boundary caught:", error);
-		try {
-			// Capture exception in Sentry if available
-			if (Sentry && typeof Sentry.captureException === "function") {
-				Sentry.captureException(error);
-			}
-		} catch (_e) {
-			// ignore Sentry failures
-		}
+		// Error tracking handled by server-side Sentry via instrument.server.mjs
 	}, [error]);
 
 	const isServerError = statusCode && statusCode >= 500;

@@ -6,7 +6,6 @@ import viteTsConfigPaths from "vite-tsconfig-paths";
 import { fileURLToPath, URL } from "node:url";
 
 import tailwindcss from "@tailwindcss/vite";
-import { cloudflare } from "@cloudflare/vite-plugin";
 
 export default defineConfig({
 	assetsInclude: ["**/*.woff", "**/*.woff2"],
@@ -28,7 +27,6 @@ export default defineConfig({
 
 	plugins: [
 		devtools(),
-		cloudflare({ viteEnvironment: { name: "ssr" } }),
 		viteTsConfigPaths({ projects: ["./tsconfig.json"] }),
 		tailwindcss(),
 		tanstackStart(),
