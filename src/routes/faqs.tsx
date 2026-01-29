@@ -210,7 +210,7 @@ function FAQsPage() {
 						Can't find what you're looking for? Open an issue on our GitHub.
 					</p>
 					<a
-						href="https://github.com/codemeapixel/roast-lab/issues"
+						href="https://github.com/CodeMeAPixel/LighthouseDark/issues"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-red-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition-all hover:scale-105"

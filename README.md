@@ -17,8 +17,8 @@ Meta tags, Open Graph data, heading structure, robots directives, and indexabili
 **AI Roasts**  
 Sarcastic, actionable suggestions powered by OpenAI. Our AI has a PhD in Sass.
 
-**Edge Deployment**  
-Runs on Cloudflare Workers for low-latency responses worldwide.
+**Node.js Deployment**  
+Runs on Node.js/Express for deployment on dokploy, coolify, or any Docker container.
 
 ## Setup
 
@@ -57,20 +57,23 @@ Opens at [http://localhost:3000](http://localhost:3000).
 bun run build
 ```
 
-## Deploy to Cloudflare
+## Deploy to Production
 
-Set secrets:
-
-```bash
-npx wrangler secret put OPENAI_API_KEY
-npx wrangler secret put GOOGLE_PAGESPEED_API_KEY
-```
-
-Deploy:
+Set environment variables:
 
 ```bash
-npx wrangler deploy
+export OPENAI_API_KEY=your_key
+export GOOGLE_PAGESPEED_API_KEY=your_key
+export SENTRY_DSN=your_sentry_dsn  # optional
 ```
+
+Run:
+
+```bash
+bun run start
+```
+
+Or deploy to dokploy/coolify and let them handle the container startup.
 
 ## Stack
 
@@ -79,7 +82,8 @@ npx wrangler deploy
 - Tailwind CSS
 - Framer Motion
 - Vercel AI SDK
-- Cloudflare Workers
+- Sentry (error tracking)
+- Node.js / Express
 
 ## Contributing
 

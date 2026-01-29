@@ -230,7 +230,7 @@ function AboutPage() {
 						reports, and feature requests from the community.
 					</p>
 					<a
-						href="https://github.com/codemeapixel/roast-lab"
+						href="https://github.com/CodeMeAPixel/LighthouseDark"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-red-500 px-6 py-3 font-semibold text-white shadow-lg shadow-orange-500/25 transition-all hover:scale-105 hover:shadow-xl hover:shadow-orange-500/30"

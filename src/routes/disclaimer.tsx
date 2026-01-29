@@ -184,7 +184,7 @@ function DisclaimerPage() {
 						through our GitHub repository.
 					</p>
 					<a
-						href="https://github.com/codemeapixel/roast-lab"
+						href="https://github.com/CodeMeAPixel/LighthouseDark"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-red-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition-all hover:scale-105"
