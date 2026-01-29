@@ -75,8 +75,8 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       
       // Twitter Card
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:site', content: '@CodeMeAPixel' },
-      { name: 'twitter:creator', content: '@CodeMeAPixel' },
+      { name: 'twitter:site', content: '@FixMyShipwreck' },
+      { name: 'twitter:creator', content: '@FixMyShipwreck' },
       { name: 'twitter:url', content: SITE_URL },
       { name: 'twitter:title', content: SITE_TITLE },
       { name: 'twitter:description', content: SITE_DESCRIPTION },
@@ -192,7 +192,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       
       // Me/Author links
       { rel: 'me', href: 'https://github.com/CodeMeAPixel' },
-      { rel: 'me', href: 'https://twitter.com/CodeMeAPixel' },
+      { rel: 'me', href: 'https://x.com/FixMyShipwreck' },
       
       // Repository
       { rel: 'repository', href: 'https://github.com/CodeMeAPixel/LighthouseDark' },
@@ -240,7 +240,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
                 height: 512,
               },
               sameAs: [
-                'https://twitter.com/CodeMeAPixel',
+                'https://x.com/FixMyShipwreck',
                 'https://github.com/CodeMeAPixel/LighthouseDark',
               ],
             },

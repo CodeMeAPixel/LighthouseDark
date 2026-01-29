@@ -17,13 +17,13 @@ const navLinks = [
 
 const socialLinks = [
   {
-    href: 'https://x.com/CodeMeAPixel',
+    href: 'https://x.com/FixMyShipwreck',
     icon: FaXTwitter,
     label: 'Twitter',
     color: 'hover:text-[#1DA1F2]',
   },
   {
-    href: 'https://github.com/codemeapixel/roast-lab',
+    href: 'https://github.com/CodeMeAPixel/LighthouseDark',
     icon: FaGithub,
     label: 'GitHub',
     color: 'hover:text-white dark:hover:text-white',
