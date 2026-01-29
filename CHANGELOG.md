@@ -31,3 +31,20 @@ All notable changes to this project will be documented in this file.
 
 - Server-side middleware (replaced with edge functions)
 - Legacy API routes from Next.js structure
+
+## [2.0.0-beta.2] - 2026-01-29
+
+### Changed
+
+- Improve Sentry integration: initialize Sentry on both client and server runtimes (Cloudflare Workers) and capture errors from the app error boundary.
+- Vite build: treat font assets as static assets and refine vendor chunking to reduce oversized bundles.
+
+### Fixed
+
+- Remove unsafe global async operations (rate limiter cleanup) that caused Cloudflare Worker runtime errors.
+- Lazy-initialize OpenAI client to ensure secrets are read during request handling in preview/edge environments.
+
+### Added
+
+- Placeholder font files in `public/fonts` to ensure fonts resolve at build time.
+

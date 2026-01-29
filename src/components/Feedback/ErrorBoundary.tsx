@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import * as Sentry from '@sentry/tanstackstart-react'
 import { motion } from 'framer-motion'
 import { RefreshCw, Home, Flame, Bug, ExternalLink, Zap, AlertTriangle } from 'lucide-react'
 import { Link } from '@tanstack/react-router'
@@ -14,6 +15,14 @@ interface ErrorBoundaryProps {
 export default function ErrorBoundary({ error, reset, statusCode }: ErrorBoundaryProps) {
   useEffect(() => {
     console.error('Error boundary caught:', error)
+    try {
+      // Capture exception in Sentry if available
+      if (Sentry && typeof Sentry.captureException === 'function') {
+        Sentry.captureException(error)
+      }
+    } catch (e) {
+      // ignore Sentry failures
+    }
   }, [error])
 
   const isServerError = statusCode && statusCode >= 500
@@ -84,7 +93,7 @@ export default function ErrorBoundary({ error, reset, statusCode }: ErrorBoundar
 
         {/* Title */}
         <motion.h1
-          className="mb-3 mt-4 bg-gradient-to-r from-red-400 via-orange-400 to-red-400 bg-clip-text text-center text-3xl font-bold text-transparent md:text-4xl"
+          className="mb-3 mt-4 bg-linear-to-r from-red-400 via-orange-400 to-red-400 bg-clip-text text-center text-3xl font-bold text-transparent md:text-4xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -145,7 +154,7 @@ export default function ErrorBoundary({ error, reset, statusCode }: ErrorBoundar
           {reset && (
             <button
               onClick={reset}
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-red-500 to-orange-500 px-6 py-3 font-semibold text-white shadow-lg shadow-red-500/25 transition-all hover:scale-105 hover:shadow-xl hover:shadow-red-500/30"
+              className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-red-500 to-orange-500 px-6 py-3 font-semibold text-white shadow-lg shadow-red-500/25 transition-all hover:scale-105 hover:shadow-xl hover:shadow-red-500/30"
             >
               <RefreshCw className="h-5 w-5" />
               Try Again

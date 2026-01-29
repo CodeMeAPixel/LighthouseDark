@@ -3,7 +3,7 @@ import { z } from 'zod'
 
 import type { LighthouseData, LighthouseMetrics } from './lighthouseAnalyzer'
 import type { SEOData } from './seoAnalyzer'
-import { openai } from './aiClient'
+import { getOpenAI } from './aiClient'
 
 export interface AISuggestion {
   name: string
@@ -384,7 +384,7 @@ Be specific with numbers. No generic advice.`
 
   try {
     const { object } = await generateObject({
-      model: openai('gpt-4o-mini'),
+      model: getOpenAI()('gpt-4o-mini'),
       temperature: 0.6,
       maxTokens: 800,
       prompt,
