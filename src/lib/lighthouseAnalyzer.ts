@@ -159,6 +159,13 @@ async function runPSIAnalysis(url: string, strategy: 'mobile' | 'desktop'): Prom
     }
 
     const encodedUrl = encodeURIComponent(url)
+    
+    // Check if analyzing localhost - PSI cannot reach local URLs
+    if (url.includes('localhost') || url.includes('127.0.0.1')) {
+      console.error(`PSI analysis skipped for ${strategy}: Cannot analyze localhost URLs via Google PageSpeed Insights.`)
+      return EMPTY
+    }
+
     const psiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodedUrl}&key=${apiKey}&strategy=${strategy}&category=performance&category=accessibility&category=best-practices&category=seo`
 
     const controller = new AbortController()
@@ -172,7 +179,15 @@ async function runPSIAnalysis(url: string, strategy: 'mobile' | 'desktop'): Prom
     clearTimeout(timeoutId)
 
     if (!response.ok) {
-      console.error(`PSI API error (${strategy}):`, response.status, response.statusText)
+      const errorText = await response.text()
+      let detailedError = ''
+      try {
+        const errorJson = JSON.parse(errorText)
+        detailedError = errorJson.error?.message || errorText
+      } catch {
+        detailedError = errorText
+      }
+      console.error(`PSI API error (${strategy}):`, response.status, detailedError)
       return EMPTY
     }
 

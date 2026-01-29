@@ -122,24 +122,25 @@ function FAQsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Icon */}
-          <motion.div
-            className="mb-6 inline-flex"
-            initial={{ scale: 0, rotate: -180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ type: 'spring', stiffness: 100, delay: 0.1 }}
-          >
-            <div className="relative">
-              <Flame className="h-16 w-16 text-orange-500 drop-shadow-[0_0_30px_rgba(249,115,22,0.4)]" />
-              <motion.div
-                className="absolute inset-0"
-                animate={{ opacity: [0.5, 1, 0.5] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                <Flame className="h-16 w-16 text-yellow-400/40 blur-sm" />
-              </motion.div>
-            </div>
-          </motion.div>
+          <div className="mb-6 flex justify-center">
+            <motion.div
+              className="inline-flex"
+              initial={{ scale: 0, rotate: -180 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{ type: 'spring', stiffness: 100, delay: 0.1 }}
+            >
+              <div className="relative">
+                <Flame className="h-16 w-16 text-orange-500 drop-shadow-[0_0_30px_rgba(249,115,22,0.4)]" />
+                <motion.div
+                  className="absolute inset-0"
+                  animate={{ opacity: [0.5, 1, 0.5] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <Flame className="h-16 w-16 text-yellow-400/40 blur-sm" />
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
 
           <motion.div
             className="mb-4 inline-flex items-center gap-2 rounded-full border border-orange-500/20 bg-orange-500/10 px-4 py-1.5 text-xs font-medium text-orange-400"
