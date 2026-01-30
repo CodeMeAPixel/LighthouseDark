@@ -1,0 +1,53 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Flame gradient -->
+    <linearGradient id="flameGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#FF2574"/>
+      <stop offset="50%" style="stop-color:#FF6B00"/>
+      <stop offset="100%" style="stop-color:#FFC000"/>
+    </linearGradient>
+    
+    <!-- Background glow -->
+    <radialGradient id="glowOrange" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" style="stop-color:#FF6B00;stop-opacity:0.25"/>
+      <stop offset="100%" style="stop-color:#FF6B00;stop-opacity:0"/>
+    </radialGradient>
+    
+    <radialGradient id="glowPink" cx="50%" cy="70%" r="50%">
+      <stop offset="0%" style="stop-color:#FF2574;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#FF2574;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="512" height="512" fill="#0f0f10"/>
+  
+  <!-- Gradient glow orbs -->
+  <ellipse cx="256" cy="180" rx="200" ry="150" fill="url(#glowOrange)"/>
+  <ellipse cx="256" cy="380" rx="180" ry="130" fill="url(#glowPink)"/>
+  
+  <!-- Flame icon (exact copy from OG, scaled 2x) -->
+  <g transform="translate(256, 256) scale(2)">
+    <!-- Outer glow -->
+    <ellipse cx="0" cy="60" rx="80" ry="50" fill="#FF6B00" opacity="0.15"/>
+    
+    <!-- Main flame path -->
+    <path d="M0 -60 
+             C20 -20, 50 10, 50 50 
+             C50 85, 28 100, 0 100 
+             C-28 100, -50 85, -50 50 
+             C-50 10, -20 -20, 0 -60 Z" 
+          fill="url(#flameGradient)"/>
+    
+    <!-- Inner flame -->
+    <path d="M0 0 
+             C10 20, 28 35, 28 55 
+             C28 75, 15 85, 0 85 
+             C-15 85, -28 75, -28 55 
+             C-28 35, -10 20, 0 0 Z" 
+          fill="#FF8C42"/>
+    
+    <!-- Core glow -->
+    <ellipse cx="0" cy="65" rx="12" ry="16" fill="#FFD700" opacity="0.8"/>
+  </g>
+</svg>
