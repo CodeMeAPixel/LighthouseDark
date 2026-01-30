@@ -2,6 +2,7 @@
 
 import { useUrlStore } from "@/lib/store";
 import FeatureGrid from "./FeatureGrid";
+import ProductHuntBadge from "./ProductHuntBadge";
 import StatsBar from "./StatsBar";
 import Steps from "../ui/Steps";
 
@@ -12,6 +13,7 @@ export default function LandingSections() {
 
 	return (
 		<div className="mt-10 space-y-10">
+			<ProductHuntBadge />
 			<Steps />
 			<FeatureGrid />
 			<StatsBar />
