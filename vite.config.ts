@@ -19,6 +19,14 @@ export default defineConfig({
 		],
 	},
 
+	optimizeDeps: {
+		include: ["lucide-react"],
+	},
+
+	ssr: {
+		noExternal: ["lucide-react"],
+	},
+
 	resolve: {
 		alias: {
 			"@": fileURLToPath(new URL("./src", import.meta.url)),
@@ -36,18 +44,7 @@ export default defineConfig({
 	build: {
 		rollupOptions: {
 			output: {
-				manualChunks: (id) => {
-					if (!id || !id.includes("node_modules")) return undefined;
-
-					if (id.includes("react-dom") || id.match(/node_modules\/react($|\/)/))
-						return "vendor-react";
-					if (id.includes("@tanstack") || id.includes("tanstack"))
-						return "vendor-tanstack";
-					if (id.includes("framer-motion")) return "vendor-framer-motion";
-					if (id.includes("@sentry")) return "vendor-sentry";
-
-					return "vendor";
-				},
+				manualChunks: undefined,
 			},
 		},
 		chunkSizeWarningLimit: 700,
