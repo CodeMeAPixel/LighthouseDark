@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [2.0.0-beta.3] - 2026-07-11
 
+Security hardening (SSRF protection, a real per-IP rate limiter), a fixed production server that actually listens, one-command Nixpacks deploys, and a theme-true accent refresh — pink in light, orange in dark, everywhere.
+
 ### Security
 
 - Add SSRF protection for URL analysis: submitted URLs are validated against private, loopback, link-local, CGNAT, and cloud-metadata addresses (resolving DNS, not just string-matching), and every redirect hop is re-validated before it is fetched.
