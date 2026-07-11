@@ -30,7 +30,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.5 }}
 			>
-				<div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#FF2574]/50 to-transparent dark:via-[#FF6B00]/50" />
+				<div className="h-px flex-1 bg-linear-to-r from-transparent via-accent/50 to-transparent" />
 				<motion.div
 					className="flex items-center gap-3"
 					initial={{ scale: 0.8 }}
@@ -41,23 +41,23 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
 						animate={{ rotate: 360 }}
 						transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
 					>
-						<TrendingUp className="h-5 w-5 text-[#FF2574] dark:text-[#FF6B00]" />
+						<TrendingUp className="h-5 w-5 text-accent" />
 					</motion.div>
 					<h2 className="text-center text-xl font-bold md:text-2xl">
 						Analysis Results
 					</h2>
 				</motion.div>
-				<div className="h-px flex-1 bg-gradient-to-l from-transparent via-[#FF2574]/50 to-transparent dark:via-[#FF6B00]/50" />
+				<div className="h-px flex-1 bg-linear-to-l from-transparent via-accent/50 to-transparent" />
 			</motion.div>
 
 			<div className="flex flex-row gap-4">
 				<Tabs.Root className="flex w-full flex-col" defaultValue="seo">
 					<Tabs.List
-						className="glass-tabbar mb-1 flex shrink-0 gap-1 rounded-xl p-1.5 bg-gradient-to-r from-white/5 to-white/2 dark:from-white/5 dark:to-white/2"
+						className="glass-tabbar mb-1 flex shrink-0 gap-1 rounded-xl p-1.5 bg-linear-to-r from-white/5 to-white/2 dark:from-white/5 dark:to-white/2"
 						aria-label="Analysis results tabs"
 					>
 						<Tabs.Trigger
-							className="group relative flex h-[44px] flex-1 cursor-pointer select-none items-center justify-center gap-2 rounded-lg px-4 text-sm font-medium outline-none transition-all duration-200 data-[state=active]:cursor-default data-[state=inactive]:hover:bg-white/10"
+							className="group relative flex h-11 flex-1 cursor-pointer select-none items-center justify-center gap-2 rounded-lg px-4 text-sm font-medium outline-none transition-all duration-200 data-[state=active]:cursor-default data-[state=inactive]:hover:bg-white/10"
 							value="seo"
 						>
 							<motion.div
@@ -67,14 +67,14 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
 								<BarChart3 className="h-4 w-4" />
 							</motion.div>
 							<span>Web Vitals</span>
-							<span className="absolute inset-0 rounded-lg bg-[#FF2574]/10 opacity-0 transition-opacity group-data-[state=active]:opacity-100 dark:bg-[#FF6B00]/10" />
+							<span className="absolute inset-0 rounded-lg bg-accent/10 opacity-0 transition-opacity group-data-[state=active]:opacity-100" />
 							<motion.span
-								className="absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-gradient-to-r from-[#FF2574] to-[#FF8AB2] transition-all duration-500 group-data-[state=active]:w-12 dark:from-[#FF6B00] dark:to-[#FFC000]"
+								className="absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-linear-to-r from-accent to-accent-soft transition-all duration-500 group-data-[state=active]:w-12"
 								layoutId="tab-underline"
 							/>
 						</Tabs.Trigger>
 						<Tabs.Trigger
-							className="group relative flex h-[44px] flex-1 cursor-pointer select-none items-center justify-center gap-2 rounded-lg px-4 text-sm font-medium outline-none transition-all duration-200 data-[state=active]:cursor-default data-[state=inactive]:hover:bg-white/10"
+							className="group relative flex h-11 flex-1 cursor-pointer select-none items-center justify-center gap-2 rounded-lg px-4 text-sm font-medium outline-none transition-all duration-200 data-[state=active]:cursor-default data-[state=inactive]:hover:bg-white/10"
 							value="ai"
 						>
 							<motion.div
@@ -84,14 +84,14 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
 								<Sparkles className="h-4 w-4" />
 							</motion.div>
 							<span>AI Roast</span>
-							<span className="absolute inset-0 rounded-lg bg-[#FF2574]/10 opacity-0 transition-opacity group-data-[state=active]:opacity-100 dark:bg-[#FF6B00]/10" />
+							<span className="absolute inset-0 rounded-lg bg-accent/10 opacity-0 transition-opacity group-data-[state=active]:opacity-100" />
 							<motion.span
-								className="absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-gradient-to-r from-[#FF2574] to-[#FF8AB2] transition-all duration-500 group-data-[state=active]:w-12 dark:from-[#FF6B00] dark:to-[#FFC000]"
+								className="absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-linear-to-r from-accent to-accent-soft transition-all duration-500 group-data-[state=active]:w-12"
 								layoutId="tab-underline"
 							/>
 						</Tabs.Trigger>
 						<Tabs.Trigger
-							className="group relative flex h-[44px] flex-1 cursor-pointer select-none items-center justify-center gap-2 rounded-lg px-4 text-sm font-medium outline-none transition-all duration-200 data-[state=active]:cursor-default data-[state=inactive]:hover:bg-white/10"
+							className="group relative flex h-11 flex-1 cursor-pointer select-none items-center justify-center gap-2 rounded-lg px-4 text-sm font-medium outline-none transition-all duration-200 data-[state=active]:cursor-default data-[state=inactive]:hover:bg-white/10"
 							value="slop"
 						>
 							<motion.div
@@ -106,9 +106,9 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
 									{slopArray.length}
 								</span>
 							)}
-							<span className="absolute inset-0 rounded-lg bg-[#FF2574]/10 opacity-0 transition-opacity group-data-[state=active]:opacity-100 dark:bg-[#FF6B00]/10" />
+							<span className="absolute inset-0 rounded-lg bg-accent/10 opacity-0 transition-opacity group-data-[state=active]:opacity-100" />
 							<motion.span
-								className="absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-gradient-to-r from-[#FF2574] to-[#FF8AB2] transition-all duration-500 group-data-[state=active]:w-12 dark:from-[#FF6B00] dark:to-[#FFC000]"
+								className="absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-linear-to-r from-accent to-accent-soft transition-all duration-500 group-data-[state=active]:w-12"
 								layoutId="tab-underline"
 							/>
 						</Tabs.Trigger>

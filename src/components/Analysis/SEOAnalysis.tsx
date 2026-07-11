@@ -104,7 +104,7 @@ export default function SEOAnalysis({ data }: SEOAnalysisProps) {
 			animate="visible"
 		>
 			<div className="mb-4 flex items-center gap-2">
-				<FileText className="h-5 w-5 text-[#FF2574] dark:text-[#FF6B00]" />
+				<FileText className="h-5 w-5 text-accent" />
 				<h3 className="text-lg font-semibold">SEO Analysis</h3>
 			</div>
 

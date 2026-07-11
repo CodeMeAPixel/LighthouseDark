@@ -42,7 +42,7 @@ export default function Steps() {
 			body: "Clear fixes with a spicy tone. Prioritized and pragmatic.",
 			icon: <CheckCircle2 className="h-5 w-5" />,
 			color:
-				"from-[#FF2574] to-[#FF8AB2] dark:from-[#FF6B00] dark:to-[#FFC000]",
+				"from-accent to-accent-soft",
 		},
 	];
 
@@ -75,12 +75,12 @@ export default function Steps() {
 					>
 						{/* Connection line on desktop */}
 						{i < steps.length - 1 && (
-							<div className="absolute -right-3 top-1/2 hidden h-px w-6 bg-gradient-to-r from-light4 to-transparent dark:from-dark4 md:block" />
+							<div className="absolute -right-3 top-1/2 hidden h-px w-6 bg-linear-to-r from-light4 to-transparent dark:from-dark4 md:block" />
 						)}
 
 						<div className="mb-4 flex items-center gap-3">
 							<div
-								className={`flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${s.color} text-white shadow-lg`}
+								className={`flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br ${s.color} text-white shadow-lg`}
 							>
 								<span className="text-sm font-bold">{i + 1}</span>
 							</div>

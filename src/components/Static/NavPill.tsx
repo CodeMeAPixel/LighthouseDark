@@ -42,7 +42,7 @@ export default function NavPill() {
 					transition={{ duration: 0.3, ease: "easeOut" }}
 				>
 					<motion.div
-						className="absolute h-20 w-64 rounded-full bg-gradient-to-r from-[#FF2574]/30 to-[#FF8AB2]/20 blur-3xl dark:from-[#FF6B00]/30 dark:to-[#FFC000]/20"
+						className="absolute h-20 w-64 rounded-full bg-linear-to-r from-accent/30 to-accent-soft/20 blur-3xl"
 						animate={{
 							opacity: isHovered ? 0.8 : 0.4,
 							scale: isHovered ? 1.1 : 1,
@@ -72,7 +72,7 @@ export default function NavPill() {
 								Lighthouse Dark
 							</span>
 							<motion.span
-								className="flex items-center gap-1 rounded-full bg-[#FF2574]/10 px-2.5 py-0.5 text-[10px] font-medium text-[#FF2574] dark:bg-[#FF6B00]/10 dark:text-[#FF6B00]"
+								className="flex items-center gap-1 rounded-full bg-accent/10 px-2.5 py-0.5 text-[10px] font-medium text-accent"
 								whileHover={{ scale: 1.1 }}
 							>
 								<motion.div

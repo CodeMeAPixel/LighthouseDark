@@ -181,7 +181,7 @@ export default function SlopAnalysis({ indicators }: SlopAnalysisProps) {
 			{/* Header */}
 			<div className="flex items-center justify-between">
 				<div className="flex items-center gap-3">
-					<div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-pink-500">
+					<div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-purple-500 to-pink-500">
 						<Sparkles className="h-5 w-5 text-white" />
 					</div>
 					<div>
@@ -314,7 +314,7 @@ export default function SlopAnalysis({ indicators }: SlopAnalysisProps) {
 			{/* Footer tip */}
 			<motion.div
 				variants={itemVariants}
-				className="rounded-xl bg-gradient-to-r from-purple-500/10 to-pink-500/10 p-4"
+				className="rounded-xl bg-linear-to-r from-purple-500/10 to-pink-500/10 p-4"
 			>
 				<div className="flex items-center gap-3">
 					<div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/20 dark:bg-white/10">

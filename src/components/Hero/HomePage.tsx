@@ -50,7 +50,7 @@ export default function HomePage() {
 					</div>
 
 					<motion.div
-						className="mb-6 inline-flex items-center gap-2 rounded-full border border-orange-500/20 bg-orange-500/10 px-4 py-1.5 text-xs font-medium text-orange-400"
+						className="accent-pill mb-6"
 						initial={{ opacity: 0, scale: 0.9 }}
 						animate={{ opacity: 1, scale: 1 }}
 						transition={{ delay: 0.1, duration: 0.4 }}
@@ -71,9 +71,7 @@ export default function HomePage() {
 						transition={{ delay: 0.2, duration: 0.5 }}
 					>
 						<span className="inline-block">Roast Your</span>{" "}
-						<span className="inline-block bg-gradient-to-r from-orange-400 via-red-400 to-pink-400 bg-clip-text text-transparent">
-							Website
-						</span>
+						<span className="gradient-text inline-block">Website</span>
 					</motion.h1>
 
 					<motion.p
@@ -109,8 +107,8 @@ export default function HomePage() {
 						transition={{ delay: 0.8, duration: 0.5 }}
 					>
 						<p className="text-sm text-light10 dark:text-dark10">
-							Trusted by developers worldwide • Free forever • No sign-up
-							required
+							Trusted by developers worldwide &bull; Free forever &bull; No
+							sign-up required
 						</p>
 					</motion.div>
 				)}

@@ -118,7 +118,7 @@ export default function AISuggestions({ suggestions }: AISuggestionsProps) {
 	return (
 		<motion.div variants={containerVariants} initial="hidden" animate="visible">
 			<div className="mb-6 flex items-center gap-3">
-				<div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#FF2574] to-[#FF8AB2] dark:from-[#FF6B00] dark:to-[#FFC000]">
+				<div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-accent to-accent-soft">
 					<Lightbulb className="h-5 w-5 text-white" />
 				</div>
 				<div>
@@ -187,7 +187,7 @@ export default function AISuggestions({ suggestions }: AISuggestionsProps) {
 										{effortStyles.icon}
 										<span>{effortStyles.label}</span>
 									</div>
-									<div className="flex items-center gap-2 text-xs text-[#FF2574] opacity-0 transition-opacity group-hover:opacity-100 dark:text-[#FF6B00]">
+									<div className="flex items-center gap-2 text-xs text-accent opacity-0 transition-opacity group-hover:opacity-100">
 										<ArrowRight className="h-3 w-3" />
 										<span>Take action</span>
 									</div>
@@ -200,11 +200,11 @@ export default function AISuggestions({ suggestions }: AISuggestionsProps) {
 
 			<motion.div
 				variants={itemVariants}
-				className="mt-6 rounded-xl bg-gradient-to-r from-[#FF2574]/10 to-[#FF8AB2]/10 p-4 dark:from-[#FF6B00]/10 dark:to-[#FFC000]/10"
+				className="mt-6 rounded-xl bg-linear-to-r from-accent/10 to-accent-soft/10 p-4"
 			>
 				<div className="flex items-center gap-3">
 					<div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/20 dark:bg-white/10">
-						<Flame className="h-4 w-4 text-[#FF2574] dark:text-[#FF6B00]" />
+						<Flame className="h-4 w-4 text-accent" />
 					</div>
 					<div>
 						<p className="text-sm font-medium">Ready to improve your site?</p>

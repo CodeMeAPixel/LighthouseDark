@@ -38,7 +38,7 @@ export default function ParticlesBackground({
 				return (
 					<motion.div
 						key={particleKey}
-						className={`absolute h-1.5 w-1.5 rounded-full bg-gradient-to-t ${particles}`}
+						className={`absolute h-1.5 w-1.5 rounded-full bg-linear-to-t ${particles}`}
 						style={{
 							left: `${5 + i * (90 / particleCount)}%`,
 							bottom: "-5%",
@@ -62,7 +62,7 @@ export default function ParticlesBackground({
 			{/* Central gradient glow */}
 			<div className="absolute left-1/2 top-1/4 -translate-x-1/2 -translate-y-1/2">
 				<motion.div
-					className={`h-[600px] w-[600px] rounded-full bg-gradient-to-r ${glow} blur-[120px]`}
+					className={`h-[600px] w-[600px] rounded-full bg-linear-to-r ${glow} blur-[120px]`}
 					animate={{
 						scale: [1, 1.15, 1],
 						opacity: [0.4, 0.6, 0.4],
@@ -78,7 +78,7 @@ export default function ParticlesBackground({
 			{/* Secondary accent glow */}
 			<div className="absolute right-0 bottom-1/4 translate-x-1/2">
 				<motion.div
-					className={`h-[400px] w-[400px] rounded-full bg-gradient-to-l ${glow} blur-[100px]`}
+					className={`h-[400px] w-[400px] rounded-full bg-linear-to-l ${glow} blur-[100px]`}
 					animate={{
 						scale: [1, 1.2, 1],
 						opacity: [0.2, 0.4, 0.2],
@@ -95,7 +95,7 @@ export default function ParticlesBackground({
 			{/* Top left accent */}
 			<div className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2">
 				<motion.div
-					className={`h-[300px] w-[300px] rounded-full bg-gradient-to-br ${glow} blur-[80px]`}
+					className={`h-[300px] w-[300px] rounded-full bg-linear-to-br ${glow} blur-[80px]`}
 					animate={{
 						scale: [1, 1.1, 1],
 						opacity: [0.3, 0.5, 0.3],

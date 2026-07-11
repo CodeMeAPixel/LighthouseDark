@@ -1,4 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
+import { getRequestIP } from "@tanstack/react-start/server";
+import * as Sentry from "@sentry/node";
 import { analyzeSEO } from "@/lib/seoAnalyzer";
 import { analyzeLighthouse } from "@/lib/lighthouseAnalyzer";
 import {
@@ -8,6 +10,7 @@ import {
 	type SlopIndicator,
 } from "@/lib/aiSuggestions";
 import { checkRateLimit } from "@/lib/rateLimiter";
+import { assertPublicHttpUrl } from "@/lib/urlGuard";
 
 interface AnalyzeRequest {
 	url: string;
@@ -51,8 +54,9 @@ export const analyzeUrl = createServerFn({ method: "POST" })
 		const { url } = data;
 
 		try {
-			// Rate limiting
-			const { allowed, resetTime } = checkRateLimit("global");
+			// Rate limiting — keyed on the real client IP, not a shared bucket
+			const clientIp = getRequestIP({ xForwardedFor: true }) ?? "unknown";
+			const { allowed, resetTime } = checkRateLimit(clientIp);
 			if (!allowed) {
 				return {
 					error: `Rate limit exceeded. Please try again in ${Math.ceil((resetTime - Date.now()) / 1000)} seconds.`,
@@ -63,14 +67,27 @@ export const analyzeUrl = createServerFn({ method: "POST" })
 			// Normalize URL
 			const normalizedUrl = normalizeUrl(url);
 
+			// Reject URLs that resolve to private/internal addresses before we
+			// spend a fetch or a PageSpeed API call on them.
+			try {
+				await assertPublicHttpUrl(normalizedUrl);
+			} catch (err) {
+				return {
+					error: err instanceof Error ? err.message : "That URL isn't allowed",
+					code: "URL_NOT_ALLOWED",
+				};
+			}
+
 			// Run all analyses in parallel
 			const [seoData, lighthouseData] = await Promise.all([
 				analyzeSEO(normalizedUrl).catch((err) => {
 					console.error("SEO analysis error:", err);
+					Sentry.captureException(err);
 					return null;
 				}),
 				analyzeLighthouse(normalizedUrl).catch((err) => {
 					console.error("Lighthouse analysis error:", err);
+					Sentry.captureException(err);
 					return null;
 				}),
 			]);
@@ -88,6 +105,7 @@ export const analyzeUrl = createServerFn({ method: "POST" })
 				}
 			} catch (err) {
 				console.error("AI suggestions error:", err);
+				Sentry.captureException(err);
 				// Continue without AI suggestions
 			}
 
@@ -104,6 +122,7 @@ export const analyzeUrl = createServerFn({ method: "POST" })
 			};
 		} catch (error) {
 			console.error("Analysis error:", error);
+			Sentry.captureException(error);
 			return {
 				error:
 					error instanceof Error

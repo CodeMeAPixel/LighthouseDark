@@ -97,7 +97,7 @@ function DisclaimerPage() {
 					</div>
 
 					<motion.div
-						className="mb-4 inline-flex items-center gap-2 rounded-full border border-orange-500/20 bg-orange-500/10 px-4 py-1.5 text-xs font-medium text-orange-400"
+						className="accent-pill mb-4"
 						initial={{ opacity: 0, scale: 0.9 }}
 						animate={{ opacity: 1, scale: 1 }}
 						transition={{ delay: 0.1 }}
@@ -149,7 +149,7 @@ function DisclaimerPage() {
 								transition={{ delay: 0.3 + index * 0.05 }}
 							>
 								<div className="flex items-start gap-4">
-									<div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500/20 to-red-500/20">
+									<div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-linear-to-br from-orange-500/20 to-red-500/20">
 										<Icon className="h-5 w-5 text-orange-400" />
 									</div>
 									<div>
@@ -173,7 +173,7 @@ function DisclaimerPage() {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.6 }}
 				>
-					<div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-orange-500/20 to-red-500/20">
+					<div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-linear-to-br from-orange-500/20 to-red-500/20">
 						<Mail className="h-6 w-6 text-orange-400" />
 					</div>
 					<h3 className="mb-2 text-lg font-semibold text-light12 dark:text-dark12">
@@ -187,7 +187,7 @@ function DisclaimerPage() {
 						href="https://github.com/CodeMeAPixel/LighthouseDark"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-red-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition-all hover:scale-105"
+						className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-orange-500 to-red-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition-all hover:scale-105"
 					>
 						Contact Us
 					</a>

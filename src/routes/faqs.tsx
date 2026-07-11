@@ -160,7 +160,7 @@ function FAQsPage() {
 					</div>
 
 					<motion.div
-						className="mb-4 inline-flex items-center gap-2 rounded-full border border-orange-500/20 bg-orange-500/10 px-4 py-1.5 text-xs font-medium text-orange-400"
+						className="accent-pill mb-4"
 						initial={{ opacity: 0, scale: 0.9 }}
 						animate={{ opacity: 1, scale: 1 }}
 						transition={{ delay: 0.1 }}
@@ -171,7 +171,7 @@ function FAQsPage() {
 
 					<h1 className="mb-4 text-4xl font-bold tracking-tight text-light12 dark:text-dark12 sm:text-5xl">
 						Frequently Asked{" "}
-						<span className="bg-gradient-to-r from-orange-400 via-red-400 to-pink-400 bg-clip-text text-transparent">
+						<span className="bg-linear-to-r from-orange-400 via-red-400 to-pink-400 bg-clip-text text-transparent">
 							Questions
 						</span>
 					</h1>
@@ -200,7 +200,7 @@ function FAQsPage() {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.8 }}
 				>
-					<div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-orange-500/20 to-red-500/20">
+					<div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-linear-to-br from-orange-500/20 to-red-500/20">
 						<MessageCircle className="h-6 w-6 text-orange-400" />
 					</div>
 					<h3 className="mb-2 text-lg font-semibold text-light12 dark:text-dark12">
@@ -213,7 +213,7 @@ function FAQsPage() {
 						href="https://github.com/CodeMeAPixel/LighthouseDark/issues"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-red-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition-all hover:scale-105"
+						className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-orange-500 to-red-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition-all hover:scale-105"
 					>
 						Open an Issue
 					</a>

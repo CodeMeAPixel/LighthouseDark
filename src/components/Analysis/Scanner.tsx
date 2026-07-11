@@ -28,7 +28,7 @@ function ScanParticles() {
 			{[...Array(12)].map((_, i) => (
 				<motion.div
 					key={dotIds[i]}
-					className="absolute h-1 w-1 rounded-full bg-gradient-to-r from-[#FF2574]/0 via-[#FF2574] to-[#FF2574]/0 dark:from-[#FF6B00]/0 dark:via-[#FF6B00] dark:to-[#FF6B00]/0"
+					className="absolute h-1 w-1 rounded-full bg-linear-to-r from-accent/0 via-accent to-accent/0"
 					initial={{
 						left: `${Math.random() * 100}%`,
 						top: "-10px",
@@ -83,7 +83,7 @@ export default function Scanner() {
 		>
 			<div className="relative w-full max-w-sm">
 				<motion.div
-					className="absolute -inset-2 rounded-2xl bg-gradient-to-r from-[#FF2574]/20 to-[#FF8AB2]/20 blur-xl dark:from-[#FF6B00]/20 dark:to-[#FFC000]/20"
+					className="absolute -inset-2 rounded-2xl bg-linear-to-r from-accent/20 to-accent-soft/20 blur-xl"
 					animate={{
 						opacity: [0.3, 0.6, 0.3],
 					}}
@@ -126,7 +126,7 @@ export default function Scanner() {
 						<div className="relative z-10 space-y-3">
 							<div className="flex items-center gap-3">
 								<motion.div
-									className="h-8 w-8 rounded-lg bg-gradient-to-br from-[#FF2574]/30 to-[#FF8AB2]/20 dark:from-[#FF6B00]/30 dark:to-[#FFC000]/20"
+									className="h-8 w-8 rounded-lg bg-linear-to-br from-accent/30 to-accent-soft/20"
 									animate={{ opacity: [0.5, 0.8, 0.5], scale: [1, 1.05, 1] }}
 									transition={{ duration: 1.5, repeat: Infinity, delay: 0 }}
 								/>
@@ -155,7 +155,7 @@ export default function Scanner() {
 						</div>
 
 						<motion.div
-							className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[#FF2574] to-[#FF8AB2] dark:from-[#FF6B00] dark:to-[#FFC000]"
+							className="absolute bottom-0 left-0 h-1 bg-linear-to-r from-accent to-accent-soft"
 							initial={{ width: "0%" }}
 							animate={{ width: `${progress}%` }}
 							transition={{ duration: 0.3 }}

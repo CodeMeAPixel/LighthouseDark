@@ -1,4 +1,6 @@
 import { parseHTML } from "linkedom";
+import * as Sentry from "@sentry/node";
+import { safeFetch } from "./urlGuard";
 
 export interface SEOData {
 	title: string | null;
@@ -47,7 +49,7 @@ export async function analyzeSEO(url: string): Promise<SEOData | undefined> {
 	try {
 		timeout = setTimeout(() => controller.abort(), 8000);
 
-		const res = await fetch(url, {
+		const { response: res, finalUrl: resolvedUrl } = await safeFetch(url, {
 			headers: {
 				"User-Agent":
 					"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
@@ -90,7 +92,7 @@ export async function analyzeSEO(url: string): Promise<SEOData | undefined> {
 				)
 				.find(Boolean) || null;
 
-		const finalUrl = (res as unknown as { url?: string }).url || url;
+		const finalUrl = resolvedUrl || url;
 		const baseHref =
 			document.querySelector("base")?.getAttribute("href") || undefined;
 		const baseUrl = new URL(baseHref || finalUrl, finalUrl).href;
@@ -206,7 +208,7 @@ export async function analyzeSEO(url: string): Promise<SEOData | undefined> {
 		let robotsTxtDisallowAll: boolean | null = null;
 		try {
 			const robotsUrl = new URL("/robots.txt", finalUrl).href;
-			const robotsRes = await fetch(robotsUrl, {
+			const { response: robotsRes } = await safeFetch(robotsUrl, {
 				signal: AbortSignal.timeout(3000),
 			});
 			robotsTxtPresent = robotsRes.ok;
@@ -222,7 +224,7 @@ export async function analyzeSEO(url: string): Promise<SEOData | undefined> {
 		let sitemapPresent: boolean | null = null;
 		try {
 			const sitemapUrl = new URL("/sitemap.xml", finalUrl).href;
-			const sitemapRes = await fetch(sitemapUrl, {
+			const { response: sitemapRes } = await safeFetch(sitemapUrl, {
 				method: "HEAD",
 				signal: AbortSignal.timeout(3000),
 			});
@@ -272,6 +274,7 @@ export async function analyzeSEO(url: string): Promise<SEOData | undefined> {
 		};
 	} catch (e) {
 		console.error("SEO analysis error:", e);
+		Sentry.captureException(e);
 		return undefined;
 	} finally {
 		if (timeout) clearTimeout(timeout);

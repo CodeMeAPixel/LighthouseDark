@@ -10,6 +10,7 @@ import {
 	FaInfo,
 	FaQuestion,
 	FaFileContract,
+	FaDiscord,
 	FaXmark,
 } from "react-icons/fa6";
 import ThemeSwitch from "./ThemeSwitch";
@@ -23,6 +24,12 @@ const navLinks = [
 ];
 
 const socialLinks = [
+	{
+		href: "https://discord.gg/nodebyte",
+		icon: FaDiscord,
+		label: "Discord",
+		color: "hover:text-[#5865F2]",
+	},
 	{
 		href: "https://x.com/FixMyShipwreck",
 		icon: FaXTwitter,
@@ -105,7 +112,7 @@ export default function FloatNav() {
 			>
 				{/* Glow effect */}
 				<motion.div
-					className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#FF2574]/20 to-[#FF8AB2]/20 blur-xl dark:from-[#FF6B00]/20 dark:to-[#FFC000]/20"
+					className="absolute -inset-1 rounded-full bg-linear-to-r from-accent/20 to-accent-soft/20 blur-xl"
 					animate={{
 						opacity: isHovered ? 0.8 : 0.3,
 						scale: isHovered ? 1.1 : 1,
@@ -127,14 +134,14 @@ export default function FloatNav() {
 								to={link.href as string}
 								className={`relative flex h-9 w-9 items-center justify-center rounded-full transition-colors ${
 									isActive
-										? "bg-[#FF2574]/20 text-[#FF2574] dark:bg-[#FF6B00]/20 dark:text-[#FF6B00]"
+										? "bg-accent/15 text-accent"
 										: "text-light11 hover:bg-white/10 hover:text-light12 dark:text-dark11 dark:hover:text-dark12"
 								}`}
 							>
 								<Icon className="h-4 w-4" />
 								{isActive && (
 									<motion.div
-										className="absolute inset-0 rounded-full border-2 border-[#FF2574] dark:border-[#FF6B00]"
+										className="absolute inset-0 rounded-full border-2 border-accent"
 										layoutId="activeNav"
 										transition={{ type: "spring", bounce: 0.3, duration: 0.5 }}
 									/>

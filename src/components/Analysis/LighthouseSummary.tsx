@@ -296,14 +296,14 @@ export default function LighthouseSummary({ data }: LighthouseSummaryProps) {
 			<Tabs.Root defaultValue="mobile">
 				<Tabs.List className="glass-tabbar mb-4 flex shrink-0 gap-1 rounded-xl p-1.5">
 					<Tabs.Trigger
-						className="group relative flex h-[40px] flex-1 cursor-pointer select-none items-center justify-center gap-2 rounded-lg px-4 text-sm font-medium outline-none transition-all duration-200 data-[state=active]:bg-white/10"
+						className="group relative flex h-10 flex-1 cursor-pointer select-none items-center justify-center gap-2 rounded-lg px-4 text-sm font-medium outline-none transition-all duration-200 data-[state=active]:bg-accent/10 data-[state=active]:text-accent"
 						value="mobile"
 					>
 						<Smartphone className="h-4 w-4" />
 						<span>Mobile</span>
 					</Tabs.Trigger>
 					<Tabs.Trigger
-						className="group relative flex h-[40px] flex-1 cursor-pointer select-none items-center justify-center gap-2 rounded-lg px-4 text-sm font-medium outline-none transition-all duration-200 data-[state=active]:bg-white/10"
+						className="group relative flex h-10 flex-1 cursor-pointer select-none items-center justify-center gap-2 rounded-lg px-4 text-sm font-medium outline-none transition-all duration-200 data-[state=active]:bg-accent/10 data-[state=active]:text-accent"
 						value="desktop"
 					>
 						<Monitor className="h-4 w-4" />

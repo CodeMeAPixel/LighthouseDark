@@ -1,3 +1,5 @@
+import * as Sentry from "@sentry/node";
+
 export interface LighthouseMetrics {
 	performanceScore: number | null;
 	accessibilityScore: number | null;
@@ -181,6 +183,7 @@ function parsePSIResult(result: unknown): LighthouseMetrics {
 		};
 	} catch (e) {
 		console.error("Error parsing PSI result:", e);
+		Sentry.captureException(e);
 		return EMPTY;
 	}
 }
@@ -242,6 +245,7 @@ async function runPSIAnalysis(
 			`PSI analysis error (${strategy}):`,
 			(e as Error)?.message || e,
 		);
+		Sentry.captureException(e);
 		return EMPTY;
 	}
 }
@@ -256,6 +260,7 @@ export async function analyzeLighthouse(url: string): Promise<LighthouseData> {
 		return { mobile, desktop };
 	} catch (e) {
 		console.error("Lighthouse analysis error:", e);
+		Sentry.captureException(e);
 		return {
 			mobile: EMPTY,
 			desktop: EMPTY,

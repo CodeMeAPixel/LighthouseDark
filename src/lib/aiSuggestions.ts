@@ -1,5 +1,6 @@
 import { generateObject } from "ai";
 import { z } from "zod";
+import * as Sentry from "@sentry/node";
 
 import type { LighthouseData, LighthouseMetrics } from "./lighthouseAnalyzer";
 import type { SEOData } from "./seoAnalyzer";
@@ -507,7 +508,10 @@ Be specific with numbers. No generic advice.`;
 		const { object } = await generateObject({
 			model: getOpenAI()("gpt-4o-mini"),
 			temperature: 0.6,
-			maxTokens: 800,
+			maxOutputTokens: 800,
+			// Fail fast to the rule-based fallback: a quota/billing error will
+			// never recover on retry, and retrying just adds latency + log noise.
+			maxRetries: 1,
 			prompt,
 			schema: z.object({
 				suggestions: z
@@ -532,9 +536,27 @@ Be specific with numbers. No generic advice.`;
 
 		return object.suggestions;
 	} catch (e) {
-		console.error("AI suggestions error:", e);
+		// Log a concise, actionable line instead of dumping the full retry/stack
+		// object. Quota/billing errors are expected when the OpenAI key is out of
+		// credits — the analysis still succeeds via the rule-based fallback below.
+		const message = e instanceof Error ? e.message : String(e);
+		const statusCode = (e as { statusCode?: number })?.statusCode;
+		const isQuotaOrRateLimit =
+			statusCode === 429 ||
+			/quota|exceeded|rate limit|insufficient/i.test(message);
 
-		// Return fallback suggestions based on detected issues
+		if (isQuotaOrRateLimit) {
+			console.warn(
+				"AI roast skipped: OpenAI quota or rate limit reached — using rule-based suggestions. Check the account's billing/plan to restore AI recommendations.",
+			);
+		} else {
+			console.warn(
+				`AI roast failed (${message}) — using rule-based suggestions.`,
+			);
+			// Only report genuinely unexpected failures to Sentry, not billing state.
+			Sentry.captureException(e);
+		}
+
 		return generateFallbackSuggestions(issues, slop);
 	}
 }

@@ -70,7 +70,7 @@ export default function NotFound() {
 
 				{/* Title */}
 				<motion.h1
-					className="mb-3 bg-gradient-to-r from-orange-400 via-red-400 to-pink-400 bg-clip-text text-center text-3xl font-bold text-transparent md:text-4xl"
+					className="mb-3 bg-linear-to-r from-orange-400 via-red-400 to-pink-400 bg-clip-text text-center text-3xl font-bold text-transparent md:text-4xl"
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.2 }}
@@ -124,7 +124,7 @@ export default function NotFound() {
 									to={item.to}
 									className="group flex items-center gap-3 rounded-xl p-2.5 transition-all hover:bg-white/5"
 								>
-									<div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500/20 to-red-500/20 transition-all group-hover:from-orange-500/30 group-hover:to-red-500/30">
+									<div className="flex h-9 w-9 items-center justify-center rounded-lg bg-linear-to-br from-orange-500/20 to-red-500/20 transition-all group-hover:from-orange-500/30 group-hover:to-red-500/30">
 										<item.icon className="h-4 w-4 text-orange-400" />
 									</div>
 									<span className="text-sm text-light11 transition-colors group-hover:text-orange-300 dark:text-dark11">
@@ -145,7 +145,7 @@ export default function NotFound() {
 				>
 					<Link
 						to="/"
-						className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-red-500 px-6 py-3 font-semibold text-white shadow-lg shadow-orange-500/25 transition-all hover:scale-105 hover:shadow-xl hover:shadow-orange-500/30"
+						className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-orange-500 to-red-500 px-6 py-3 font-semibold text-white shadow-lg shadow-orange-500/25 transition-all hover:scale-105 hover:shadow-xl hover:shadow-orange-500/30"
 					>
 						<Home className="h-5 w-5" />
 						Back to Home

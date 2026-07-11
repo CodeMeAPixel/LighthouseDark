@@ -35,7 +35,7 @@ export default function StatsBar() {
 				<ul className="grid grid-cols-3 divide-x divide-white/10 dark:divide-white/5">
 					{stats.map((s, i) => (
 						<motion.li
-							key={`stat-${i}-${s.value}`}
+							key={`stat-${i}-${s.k}`}
 							className="flex flex-col items-center justify-center px-2 py-2"
 							initial={{ opacity: 0, scale: 0.9 }}
 							whileInView={{ opacity: 1, scale: 1 }}

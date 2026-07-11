@@ -50,7 +50,7 @@ const techStack = [
 		description: "Real-world performance data",
 	},
 	{ name: "OpenAI GPT-4", description: "AI-powered recommendations" },
-	{ name: "Cloudflare Workers", description: "Edge deployment" },
+	{ name: "Node.js", description: "Self-hosted server runtime" },
 	{ name: "Tailwind CSS", description: "Modern styling" },
 ];
 
@@ -101,7 +101,7 @@ function AboutPage() {
 					</div>
 
 					<motion.div
-						className="mb-4 inline-flex items-center gap-2 rounded-full border border-orange-500/20 bg-orange-500/10 px-4 py-1.5 text-xs font-medium text-orange-400"
+						className="accent-pill mb-4"
 						initial={{ opacity: 0, scale: 0.9 }}
 						animate={{ opacity: 1, scale: 1 }}
 						transition={{ delay: 0.1 }}
@@ -112,7 +112,7 @@ function AboutPage() {
 
 					<h1 className="mb-4 text-4xl font-bold tracking-tight text-light12 dark:text-dark12 sm:text-5xl">
 						About{" "}
-						<span className="bg-gradient-to-r from-orange-400 via-red-400 to-pink-400 bg-clip-text text-transparent">
+						<span className="bg-linear-to-r from-orange-400 via-red-400 to-pink-400 bg-clip-text text-transparent">
 							Lighthouse Dark
 						</span>
 					</h1>
@@ -131,7 +131,7 @@ function AboutPage() {
 					transition={{ delay: 0.2, duration: 0.5 }}
 				>
 					<div className="flex items-start gap-4 mb-6">
-						<div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500/20 to-red-500/20">
+						<div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-orange-500/20 to-red-500/20">
 							<Heart className="h-6 w-6 text-orange-400" />
 						</div>
 						<div>
@@ -170,7 +170,7 @@ function AboutPage() {
 									transition={{ delay: 0.3 + index * 0.1 }}
 									whileHover={{ scale: 1.02 }}
 								>
-									<div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500/20 to-red-500/20 transition-all group-hover:from-orange-500/30 group-hover:to-red-500/30">
+									<div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-linear-to-br from-orange-500/20 to-red-500/20 transition-all group-hover:from-orange-500/30 group-hover:to-red-500/30">
 										<Icon className="h-5 w-5 text-orange-400" />
 									</div>
 									<h3 className="text-base font-semibold text-light12 dark:text-dark12 mb-1">
@@ -219,7 +219,7 @@ function AboutPage() {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.6, duration: 0.5 }}
 				>
-					<div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-orange-500/20 to-red-500/20">
+					<div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-full bg-linear-to-br from-orange-500/20 to-red-500/20">
 						<Github className="h-7 w-7 text-orange-400" />
 					</div>
 					<h2 className="text-2xl font-semibold text-light12 dark:text-dark12 mb-3">
@@ -233,7 +233,7 @@ function AboutPage() {
 						href="https://github.com/CodeMeAPixel/LighthouseDark"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-red-500 px-6 py-3 font-semibold text-white shadow-lg shadow-orange-500/25 transition-all hover:scale-105 hover:shadow-xl hover:shadow-orange-500/30"
+						className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-orange-500 to-red-500 px-6 py-3 font-semibold text-white shadow-lg shadow-orange-500/25 transition-all hover:scale-105 hover:shadow-xl hover:shadow-orange-500/30"
 					>
 						<Github className="h-5 w-5" />
 						View on GitHub

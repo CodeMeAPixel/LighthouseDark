@@ -102,9 +102,7 @@ export default function AnalyzerForm({
 					>
 						<motion.fieldset
 							className={`relative flex w-full gap-2 rounded-2xl p-2.5 glass-surface transition-all duration-300 ${
-								isFocused
-									? "ring-2 ring-[#FF2574]/20 dark:ring-[#FF6B00]/20"
-									: ""
+								isFocused ? "ring-2 ring-accent/25" : ""
 							}`}
 							animate={{ scale: isFocused ? 1.01 : 1 }}
 							transition={{ duration: 0.2 }}
@@ -119,13 +117,13 @@ export default function AnalyzerForm({
 								onFocus={() => setIsFocused(true)}
 								onBlur={() => setIsFocused(false)}
 								placeholder="Enter website URL (e.g., example.com)"
-								className="h-[44px] w-full flex-1 rounded-xl pl-10 pr-28 font-sans text-sm transition-all duration-200 glass-input"
+								className="h-11 w-full flex-1 rounded-xl pl-10 pr-28 font-sans text-sm transition-all duration-200 glass-input"
 								required
 								aria-label="Website URL to analyze"
 							/>
 							<motion.button
 								type="submit"
-								className="absolute right-3 top-1/2 -translate-y-1/2 flex h-[36px] min-w-[100px] items-center justify-center gap-2 overflow-hidden glass-button-primary disabled:cursor-not-allowed disabled:opacity-50"
+								className="absolute right-3 top-1/2 -translate-y-1/2 flex h-9 min-w-25 items-center justify-center gap-2 overflow-hidden glass-button-primary disabled:cursor-not-allowed disabled:opacity-50"
 								disabled={isLoading || !url.trim()}
 								whileHover={{ scale: 1.02 }}
 								whileTap={{ scale: 0.98 }}
@@ -175,7 +173,7 @@ export default function AnalyzerForm({
 									exit={{ opacity: 0, y: -10, height: 0 }}
 									className="flex items-center gap-2 rounded-xl bg-red-500/10 px-4 py-3 text-sm text-red-600 dark:text-red-400"
 								>
-									<AlertCircle className="h-4 w-4 flex-shrink-0" />
+									<AlertCircle className="h-4 w-4 shrink-0" />
 									<span>{error}</span>
 								</motion.div>
 							)}

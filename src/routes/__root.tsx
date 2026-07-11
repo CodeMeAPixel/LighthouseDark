@@ -358,7 +358,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 					fallback={
 						<div className="pointer-events-none fixed inset-0 overflow-hidden z-0">
 							<div className="absolute left-1/2 top-1/4 -translate-x-1/2 -translate-y-1/2">
-								<div className="h-[600px] w-[600px] rounded-full bg-gradient-to-r from-orange-500/10 via-red-500/5 to-pink-500/10 blur-[120px] opacity-50" />
+								<div className="h-[600px] w-[600px] rounded-full bg-linear-to-r from-orange-500/10 via-red-500/5 to-pink-500/10 blur-[120px] opacity-50" />
 							</div>
 						</div>
 					}
