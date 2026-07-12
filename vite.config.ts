@@ -14,6 +14,7 @@ export default defineConfig({
 		host: "0.0.0.0",
 		allowedHosts: [
 			"roastlab.lol",
+			"www.roastlab.lol",
 			"www.lighthousedark.org",
 			"lighthousedark.org",
 		],

@@ -42,7 +42,7 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-icons": "^5.5.0",
-    "srvx": "^0.10.1",
+    "srvx": "^0.11.2",
     "streamdown": "^1.6.5",
     "tailwind-merge": "^3.0.2",
     "tailwindcss": "^4.0.6",
